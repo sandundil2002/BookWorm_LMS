@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="622.0" prefWidth="650.0" styleClass="root" stylesheets="@../style/adminLogin_form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.AdminLoginFormController">
+   <children>
+      <Label layoutX="201.0" layoutY="24.0" styleClass="title" stylesheets="@../style/adminLogin_form.css" text="Hello Admin" />
+      <Label layoutX="84.0" layoutY="119.0" styleClass="subtitle" stylesheets="@../style/adminLogin_form.css" text="Please Enter Your Username And Password" />
+      <TextField fx:id="txtUsername" layoutX="146.0" layoutY="237.0" maxWidth="346.0" prefHeight="39.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../style/adminLogin_form.css" />
+      <TextField fx:id="txtPassword" layoutX="149.0" layoutY="362.0" onAction="#btnLoginOnAction" prefHeight="43.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../style/adminLogin_form.css" />
+      <Label layoutX="159.0" layoutY="215.0" styleClass="normalTitle" stylesheets="@../style/adminLogin_form.css" text="User Name" />
+      <Label layoutX="162.0" layoutY="340.0" styleClass="normalTitle" stylesheets="@../style/adminLogin_form.css" text="Password" />
+      <JFXButton layoutX="254.0" layoutY="468.0" onAction="#btnLoginOnAction" prefHeight="46.0" prefWidth="130.0" styleClass="btn" stylesheets="@../style/adminLogin_form.css" text="Login" />
+   </children>
+</AnchorPane>

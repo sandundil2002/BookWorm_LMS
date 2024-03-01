@@ -25,11 +25,11 @@
          </font>
       </Label>
       <Label layoutX="99.0" layoutY="5.0" styleClass="title" stylesheets="@../style/home_form.css" text="Welcome To BookWorm Library" />
-      <AnchorPane layoutX="37.0" layoutY="72.0" prefHeight="622.0" prefWidth="650.0" styleClass="pane" stylesheets="@../style/home_form.css">
+      <AnchorPane fx:id="pane" layoutX="37.0" layoutY="72.0" prefHeight="622.0" prefWidth="650.0" styleClass="pane" stylesheets="@../style/home_form.css">
          <children>
             <Label layoutX="107.0" layoutY="33.0" styleClass="title" stylesheets="@../style/home_form.css" text="Please Select Your Role" />
-            <JFXButton layoutX="250.0" layoutY="175.0" onAction="#btnAdminOnAction" styleClass="btn" stylesheets="@../style/home_form.css" text="Admin" />
-            <JFXButton layoutX="260.0" layoutY="424.0" onAction="#btnUserOnAction" prefHeight="63.0" prefWidth="115.0" styleClass="btn" stylesheets="@../style/home_form.css" text="User" />
+            <JFXButton layoutX="233.0" layoutY="175.0" onAction="#btnAdminOnAction" prefHeight="68.0" prefWidth="162.0" styleClass="btn" stylesheets="@../style/home_form.css" text="Admin" />
+            <JFXButton layoutX="233.0" layoutY="421.0" onAction="#btnUserOnAction" prefHeight="68.0" prefWidth="162.0" styleClass="btn" stylesheets="@../style/home_form.css" text="User" />
             <Label layoutX="290.0" layoutY="301.0" styleClass="title" stylesheets="@../style/home_form.css" text="Or" />
          </children></AnchorPane>
       <Label alignment="CENTER" layoutX="199.0" layoutY="696.0" prefHeight="19.0" prefWidth="794.0" text="Copyright 2024 GDSE 68 - All Rights Reserved. MIT License.">
