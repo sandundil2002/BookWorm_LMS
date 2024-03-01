@@ -1,0 +1,36 @@
+.root{
+    -fx-background-color: #A1A1A1;
+}
+
+.title{
+    -fx-font-family: Ubuntu;
+    -fx-text-fill: #333;
+    -fx-font-size: 40px;
+    -fx-font-weight:bold;
+    -fx-border: 3px solid #ccc;
+    -fx-border-radius: 5px;
+    -fx-background-color: Transparent;
+    -fx-text-alignment: right;
+}
+
+.btn{
+    -fx-background-color: transparent;
+    -fx-border-color:  #27ae60;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 30;
+    -fx-font-size: 30;
+    -fx-text-fill: #401BEA;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-max-width: 500px;
+}
+
+.btn:hover{
+    -fx-background-color: #26EB50;
+}
+
+.pane{
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-background-color:  #A1A1A1;
+}

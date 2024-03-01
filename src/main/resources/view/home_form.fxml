@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1200.0" styleClass="root" stylesheets="@../style/home_form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.HomeFormController">
+   <children>
+      <ImageView fitHeight="686.0" fitWidth="467.0" layoutX="734.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
+         <image>
+            <Image url="@../assets/home.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="64.0" fitWidth="78.0" layoutX="14.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/logo.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="16.0" layoutY="52.0" text="BookWorm">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="99.0" layoutY="5.0" styleClass="title" stylesheets="@../style/home_form.css" text="Welcome To BookWorm Library" />
+      <AnchorPane layoutX="37.0" layoutY="72.0" prefHeight="622.0" prefWidth="650.0" styleClass="pane" stylesheets="@../style/home_form.css">
+         <children>
+            <Label layoutX="107.0" layoutY="33.0" styleClass="title" stylesheets="@../style/home_form.css" text="Please Select Your Role" />
+            <JFXButton layoutX="250.0" layoutY="175.0" onAction="#btnAdminOnAction" styleClass="btn" stylesheets="@../style/home_form.css" text="Admin" />
+            <JFXButton layoutX="260.0" layoutY="424.0" onAction="#btnUserOnAction" prefHeight="63.0" prefWidth="115.0" styleClass="btn" stylesheets="@../style/home_form.css" text="User" />
+            <Label layoutX="290.0" layoutY="301.0" styleClass="title" stylesheets="@../style/home_form.css" text="Or" />
+         </children></AnchorPane>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="696.0" prefHeight="19.0" prefWidth="794.0" text="Copyright 2024 GDSE 68 - All Rights Reserved. MIT License.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
