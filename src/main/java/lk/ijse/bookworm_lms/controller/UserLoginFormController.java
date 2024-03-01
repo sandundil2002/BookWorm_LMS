@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class AdminLoginFormController {
+public class UserLoginFormController {
 
     @FXML
     private AnchorPane pane;
@@ -20,6 +20,11 @@ public class AdminLoginFormController {
 
     @FXML
     private void btnLoginOnAction() {
+
+    }
+
+    @FXML
+    private void btnSignupOnAction() {
 
     }
 
