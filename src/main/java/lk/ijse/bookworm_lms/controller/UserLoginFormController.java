@@ -25,7 +25,13 @@ public class UserLoginFormController {
 
     @FXML
     private void btnSignupOnAction() {
-
+        pane.getChildren().clear();
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userSignup_form.fxml"));
+            pane.getChildren().add(anchorPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
