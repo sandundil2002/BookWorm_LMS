@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" prefHeight="622.0" prefWidth="650.0" stylesheets="@../style/main_form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.MainFormController">
+   <children>
+      <Label layoutX="117.0" layoutY="43.0" styleClass="title" stylesheets="@../style/main_form.css" text="Please Select Your Role" />
+      <JFXButton layoutX="243.0" layoutY="185.0" onAction="#btnAdminOnAction" prefHeight="68.0" prefWidth="162.0" styleClass="btn" stylesheets="@../style/main_form.css" text="Admin" />
+      <JFXButton layoutX="243.0" layoutY="431.0" onAction="#btnUserOnAction" prefHeight="68.0" prefWidth="162.0" styleClass="btn" stylesheets="@../style/main_form.css" text="User" />
+      <Label layoutX="300.0" layoutY="311.0" styleClass="title" stylesheets="@../style/main_form.css" text="Or" />
+   </children>
+</AnchorPane>

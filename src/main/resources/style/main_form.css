@@ -1,5 +1,8 @@
 .root{
     -fx-background-color: #A1A1A1;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
 }
 
 .title{
@@ -27,10 +30,4 @@
 
 .btn:hover{
     -fx-background-color: #26EB50;
-}
-
-.pane{
-    -fx-border-color: black;
-    -fx-border-radius: 20px;
-    -fx-border-width: 1px;
 }
