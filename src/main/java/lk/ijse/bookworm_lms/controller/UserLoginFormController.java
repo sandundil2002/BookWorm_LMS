@@ -27,7 +27,7 @@ public class UserLoginFormController {
     private void btnSignupOnAction() {
         pane.getChildren().clear();
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userSignup_form.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userSignupForm.fxml"));
             pane.getChildren().add(anchorPane);
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class UserLoginFormController {
     private void btnBackOnAction() {
         pane.getChildren().clear();
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/main_form.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/mainLoginForm.fxml"));
             pane.getChildren().add(anchorPane);
         } catch (IOException e) {
             e.printStackTrace();

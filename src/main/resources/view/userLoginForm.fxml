@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" prefHeight="622.0" prefWidth="650.0" styleClass="root" stylesheets="@../style/user-login-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.UserLoginFormController">
+   <children>
+      <Label layoutX="217.0" layoutY="24.0" styleClass="title" stylesheets="@../style/user-login-form.css" text="Hello User" />
+      <Label layoutX="84.0" layoutY="120.0" styleClass="subtitle" text="Please Enter Your Username And Password" />
+      <TextField fx:id="txtUsername" layoutX="146.0" layoutY="237.0" maxWidth="346.0" prefHeight="39.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../style/user-login-form.css" />
+      <TextField fx:id="txtPassword" layoutX="149.0" layoutY="362.0" onAction="#btnLoginOnAction" prefHeight="43.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../style/user-login-form.css" />
+      <Label layoutX="159.0" layoutY="215.0" styleClass="normalTitle" stylesheets="@../style/admin-login-form.css" text="User Name" />
+      <Label layoutX="162.0" layoutY="340.0" styleClass="normalTitle" stylesheets="@../style/admin-login-form.css" text="Password" />
+      <JFXButton layoutX="254.0" layoutY="468.0" onAction="#btnLoginOnAction" prefHeight="46.0" prefWidth="130.0" styleClass="btn" stylesheets="@../style/user-login-form.css" text="Login" />
+      <JFXButton layoutX="492.0" layoutY="25.0" onAction="#btnSignupOnAction" prefHeight="46.0" prefWidth="130.0" styleClass="btn" stylesheets="@../style/user-login-form.css" text="Sign Up" />
+      <ImageView fitHeight="50.0" fitWidth="67.0" layoutX="23.0" layoutY="25.0" onMouseClicked="#btnBackOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Back Arrow.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

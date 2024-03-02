@@ -18,7 +18,7 @@ public class HomeFormController {
     private void btnAdminOnAction() {
         pane.getChildren().clear();
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminLogin_form.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminLoginForm.fxml"));
             pane.getChildren().add(anchorPane);
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class HomeFormController {
     private void btnUserOnAction() {
         pane.getChildren().clear();
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userLogin_form.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userLoginForm.fxml"));
             pane.getChildren().add(anchorPane);
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,13 +1,12 @@
 package lk.ijse.bookworm_lms.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class MainFormController {
+public class MainLoginFormController {
 
     @FXML
     private AnchorPane pane;
@@ -16,7 +15,7 @@ public class MainFormController {
     private void btnAdminOnAction() {
         pane.getChildren().clear();
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminLogin_form.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminLoginForm.fxml"));
             pane.getChildren().add(anchorPane);
         } catch (IOException e) {
             e.printStackTrace();
@@ -27,7 +26,7 @@ public class MainFormController {
     private void btnUserOnAction() {
         pane.getChildren().clear();
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userLogin_form.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userLoginForm.fxml"));
             pane.getChildren().add(anchorPane);
         } catch (IOException e) {
             e.printStackTrace();
