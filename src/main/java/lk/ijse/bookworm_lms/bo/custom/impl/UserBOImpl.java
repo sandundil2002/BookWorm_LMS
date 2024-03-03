@@ -15,8 +15,8 @@ public class UserBOImpl implements UserBO {
         return userDAO.save(new User(
                 dto.getName(),
                 dto.getEmail(),
-                dto.getPassword())
-        );
+                dto.getPassword()
+        ));
     }
 
     @Override
