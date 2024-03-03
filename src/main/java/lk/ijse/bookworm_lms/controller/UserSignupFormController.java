@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bookworm_lms.bo.BOFactory;
+import lk.ijse.bookworm_lms.bo.custom.UserBO;
+import lk.ijse.bookworm_lms.dto.UserDTO;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -23,14 +26,28 @@ public class UserSignupFormController {
     @FXML
     private TextField txtUsername;
 
+    private final UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+
     @FXML
     private void btnSignupOnAction() {
         if(validateUser()){
             String name = txtUsername.getText();
             String email = txtEmail.getText();
             String password = txtPassword.getText();
-        }
 
+            UserDTO userDTO = new UserDTO(name, email, password);
+            try {
+                boolean isSaved = userBO.save(userDTO);
+                if (isSaved){
+                    new Alert(Alert.AlertType.CONFIRMATION, "User Registered Successfully").show();
+                    btnBackOnAction();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "User Registration Failed").show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

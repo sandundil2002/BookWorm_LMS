@@ -10,4 +10,7 @@ module lk.ijse.bookworm_lms {
     exports lk.ijse.bookworm_lms;
     exports lk.ijse.bookworm_lms.controller;
     opens lk.ijse.bookworm_lms.controller to javafx.fxml;
+    opens lk.ijse.bookworm_lms.entity;
+    opens lk.ijse.bookworm_lms.dto;
+    opens lk.ijse.bookworm_lms.dao;
 }

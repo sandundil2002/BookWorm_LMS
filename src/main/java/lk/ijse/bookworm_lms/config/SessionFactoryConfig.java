@@ -1,8 +1,9 @@
 package lk.ijse.bookworm_lms.config;
 
-import lk.ijse.bookworm_lms.entity.User;
+import lk.ijse.bookworm_lms.entity.*;
 import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.boot.*;
+import org.hibernate.boot.registry.*;
 
 public class SessionFactoryConfig {
 
@@ -11,7 +12,9 @@ public class SessionFactoryConfig {
     private final SessionFactory sessionFactory;
 
     private SessionFactoryConfig() {
-        sessionFactory = new Configuration().configure().addAnnotatedClass(User.class).buildSessionFactory();
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().loadProperties("hibernate.properties").build();
+        Metadata metadata = new MetadataSources(serviceRegistry).addAnnotatedClass(User.class).getMetadataBuilder().build();
+        sessionFactory = metadata.buildSessionFactory();
     }
 
     public static SessionFactoryConfig getInstance() {
