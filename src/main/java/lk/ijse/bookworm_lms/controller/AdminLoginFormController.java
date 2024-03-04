@@ -2,9 +2,11 @@ package lk.ijse.bookworm_lms.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.AdminBO;
 import lk.ijse.bookworm_lms.dto.AdminDTO;
@@ -56,9 +58,25 @@ public class AdminLoginFormController {
             Admin admin = adminBO.searchAdmin(username, password);
             if (admin == null){
                 new Alert(Alert.AlertType.WARNING,"Incorrect username or password").show();
+            } else {
+                loadDashboard();
             }
         } catch (Exception e) {
             new Alert(Alert.AlertType.WARNING,"Incorrect username or password").show();
+        }
+    }
+
+    private void loadDashboard(){
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminDashboardForm.fxml"));
+            Scene scene = new Scene(anchorPane);
+            Stage stage = (Stage) pane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Admin Dashboard");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
         }
     }
 
