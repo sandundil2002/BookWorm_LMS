@@ -5,8 +5,8 @@ import lk.ijse.bookworm_lms.dao.custom.UserDAO;
 import lk.ijse.bookworm_lms.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
@@ -38,5 +38,20 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getAll() throws Exception {
         return null;
+    }
+
+    @Override
+    public User searchUser(String name, String password) {
+        Session searchSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction searchTransaction = searchSession.beginTransaction();
+        Query<User> query = searchSession.createQuery("FROM User WHERE name = :name AND password = :password", User.class);
+        query.setParameter("name", name);
+        query.setParameter("password", password);
+
+        User user = query.uniqueResult();
+        searchTransaction.commit();
+        searchSession.close();
+
+        return user;
     }
 }

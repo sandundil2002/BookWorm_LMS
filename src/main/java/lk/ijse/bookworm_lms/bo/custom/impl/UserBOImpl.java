@@ -41,4 +41,16 @@ public class UserBOImpl implements UserBO {
     public List<UserDTO> getAll() throws Exception {
         return null;
     }
+
+    @Override
+    public User searchUser(String name, String password) {
+        User user = userDAO.searchUser(name,password);
+        if (user != null){
+            return new User(
+                    user.getName(),
+                    user.getPassword()
+            );
+        }
+        return null;
+    }
 }
