@@ -9,8 +9,8 @@ import lk.ijse.bookworm_lms.entity.Admin;
 import java.util.List;
 
 public class AdminBOImpl implements AdminBO {
-
     private final AdminDAO adminDAO = (AdminDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ADMIN);
+
     @Override
     public boolean save(AdminDTO dto) throws Exception {
         return adminDAO.save(new Admin(
@@ -30,7 +30,24 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
+    public AdminDTO search(String id) throws Exception {
+        return null;
+    }
+
+    @Override
     public List<AdminDTO> getAll() throws Exception {
+        return null;
+    }
+
+    @Override
+    public Admin searchAdmin(String name, String password) {
+        Admin admin = adminDAO.searchAdmin(name, password);
+        if (admin != null){
+            return new Admin(
+                    admin.getName(),
+                    admin.getPassword()
+            );
+        }
         return null;
     }
 }

@@ -1,13 +1,17 @@
 package lk.ijse.bookworm_lms.dao;
 
+import lk.ijse.bookworm_lms.entity.Admin;
+
 import java.util.List;
 
 public interface CrudDAO<T> extends SuperDAO{
-    boolean save(T t) throws Exception;
+    boolean save(T dto) throws Exception;
 
-    boolean delete(T t) throws Exception;
+    boolean delete(String id) throws Exception;
 
-    boolean update(T t) throws Exception;
+    boolean update(T dto) throws Exception;
+
+    T search(String id) throws Exception;
 
     List<T> getAll() throws Exception;
 }

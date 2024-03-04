@@ -83,7 +83,7 @@ public class UserSignupFormController {
         }
 
         String password = txtPassword.getText();
-        boolean isPasswordValidated = Pattern.compile("^[A-Za-z0-9+_.-]{6,20}$").matcher(password).matches();
+        boolean isPasswordValidated = Pattern.compile("^[A-Za-z0-9+_.-]{4,20}$").matcher(password).matches();
 
         if (!isPasswordValidated) {
             new Alert(Alert.AlertType.WARNING, "Please enter a valid password").show();

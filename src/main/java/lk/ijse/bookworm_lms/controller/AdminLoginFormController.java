@@ -8,8 +8,11 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.AdminBO;
 import lk.ijse.bookworm_lms.dto.AdminDTO;
+import lk.ijse.bookworm_lms.entity.Admin;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class AdminLoginFormController {
 
@@ -30,7 +33,9 @@ public class AdminLoginFormController {
 
     @FXML
     private void btnLoginOnAction() {
-
+        if (validateAdmin()){
+            searchAdmin();
+        }
     }
 
     @FXML
@@ -42,6 +47,42 @@ public class AdminLoginFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void searchAdmin(){
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        try {
+            Admin admin = adminBO.searchAdmin(username, password);
+            if (admin == null){
+                new Alert(Alert.AlertType.WARNING,"Incorrect username or password").show();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.WARNING,"Incorrect username or password").show();
+        }
+    }
+
+    private boolean validateAdmin(){
+        String name = txtUsername.getText();
+        boolean isFirstNameValidated = Pattern.compile("^[A-Za-z]{1,20}$").matcher(name).matches();
+
+        if (!isFirstNameValidated) {
+            new Alert(Alert.AlertType.WARNING, "Please enter a valid user name").show();
+            txtUsername.setStyle("-fx-border-color:#ff0000;");
+            txtUsername.requestFocus();
+            return false;
+        }
+
+        String password = txtPassword.getText();
+        boolean isPasswordValidated = Pattern.compile("^[A-Za-z0-9+_.-]{4,20}$").matcher(password).matches();
+
+        if (!isPasswordValidated) {
+            new Alert(Alert.AlertType.WARNING, "Please enter a valid password").show();
+            txtPassword.setStyle("-fx-border-color:#ff0000;");
+            txtPassword.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void addDefaultAdmin(){
