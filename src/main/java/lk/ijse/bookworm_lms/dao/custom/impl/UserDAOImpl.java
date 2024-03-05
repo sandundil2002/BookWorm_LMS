@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean update(User user) throws Exception {
+    public boolean update(String id , User user) throws Exception {
         return false;
     }
 

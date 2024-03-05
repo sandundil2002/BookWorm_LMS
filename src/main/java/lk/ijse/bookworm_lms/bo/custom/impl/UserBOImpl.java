@@ -23,7 +23,7 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public boolean update(UserDTO dto) throws Exception {
+    public boolean update(String id , UserDTO dto) throws Exception {
         return false;
     }
 

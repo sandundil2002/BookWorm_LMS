@@ -52,7 +52,27 @@ public class AdminDashboardFormController {
 
     @FXML
     private void btnUpdateOnAction() {
+        String id = txtSearch.getText();
+        if (Pattern.compile("\\d+").matcher(id).matches() && validateBranch()) {
+            String name = txtName.getText();
+            String manager = txtManager.getText();
+            String address = txtAddress.getText();
+            String email = txtMail.getText();
 
+            BranchDTO branchDTO = new BranchDTO(name,manager,address,email);
+            try {
+                boolean isUpdated = branchBO.update(id,branchDTO);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Branch Updated Successfully").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Branch not found").show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Invalid Branch ID").show();
+        }
     }
 
     @FXML

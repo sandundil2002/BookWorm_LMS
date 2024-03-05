@@ -14,6 +14,7 @@ public class BranchBOImpl implements BranchBO {
     @Override
     public boolean save(BranchDTO dto) throws Exception {
         return branchDAO.save(new Branch(
+                dto.getId(),
                 dto.getName(),
                 dto.getManager(),
                 dto.getAddress(),
@@ -22,8 +23,13 @@ public class BranchBOImpl implements BranchBO {
     }
 
     @Override
-    public boolean update(BranchDTO dto) throws Exception {
-        return false;
+    public boolean update(String id,BranchDTO dto) throws Exception {
+        return branchDAO.update(id,new Branch(
+                dto.getName(),
+                dto.getManager(),
+                dto.getAddress(),
+                dto.getEmail()
+        ));
     }
 
     @Override

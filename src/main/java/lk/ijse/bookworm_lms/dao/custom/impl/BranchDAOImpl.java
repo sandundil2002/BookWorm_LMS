@@ -26,8 +26,24 @@ public class BranchDAOImpl implements BranchDAO {
     }
 
     @Override
-    public boolean update(Branch dto) throws Exception {
-        return false;
+    public boolean update(String id , Branch dto) throws Exception {
+        Session updateSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction updateTransaction = updateSession.beginTransaction();
+        Branch existingBranch = updateSession.get(Branch.class, id);
+        if (existingBranch!= null) {
+            existingBranch.setManager(dto.getManager());
+            existingBranch.setName(dto.getName());
+            existingBranch.setAddress(dto.getAddress());
+            existingBranch.setEmail(dto.getEmail());
+            updateSession.merge(existingBranch);
+        } else {
+            updateTransaction.commit();
+            updateSession.close();
+            return false;
+        }
+        updateTransaction.commit();
+        updateSession.close();
+        return true;
     }
 
     @Override

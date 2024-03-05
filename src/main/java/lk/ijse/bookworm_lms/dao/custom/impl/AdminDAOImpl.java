@@ -27,7 +27,7 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public boolean update(Admin admin) throws Exception {
+    public boolean update(String id , Admin admin) throws Exception {
         return false;
     }
 

@@ -20,7 +20,7 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
-    public boolean update(AdminDTO dto) throws Exception {
+    public boolean update(String id , AdminDTO dto) throws Exception {
         return false;
     }
 

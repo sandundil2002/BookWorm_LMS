@@ -6,7 +6,7 @@ public interface CrudBO<T> extends SuperBO{
 
     boolean save(T dto) throws Exception;
 
-    boolean update(T dto) throws Exception;
+    boolean update(String id,T dto) throws Exception;
 
     boolean delete(String id) throws Exception;
 
