@@ -1,5 +1,7 @@
 package lk.ijse.bookworm_lms.bo;
 
+import javafx.collections.ObservableList;
+
 import java.util.List;
 
 public interface CrudBO<T> extends SuperBO{
@@ -12,6 +14,6 @@ public interface CrudBO<T> extends SuperBO{
 
     T search(String id) throws Exception;
 
-    List<T> getAll() throws Exception;
+    ObservableList<T> getAll() throws Exception;
 
 }

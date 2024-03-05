@@ -1,5 +1,8 @@
 package lk.ijse.bookworm_lms.dao.custom.impl;
 
+import jakarta.persistence.criteria.CriteriaQuery;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.config.SessionFactoryConfig;
 import lk.ijse.bookworm_lms.dao.custom.BranchDAO;
 import lk.ijse.bookworm_lms.entity.Branch;
@@ -62,7 +65,14 @@ public class BranchDAOImpl implements BranchDAO {
     }
 
     @Override
-    public List<Branch> getAll() throws Exception {
-        return null;
+    public ObservableList<Branch> getAll(){
+        ObservableList<Branch> allBranchList = FXCollections.observableArrayList();
+        Session loadSession = SessionFactoryConfig.getInstance().getSession();
+        CriteriaQuery<Branch> criteriaQuery = loadSession.getCriteriaBuilder().createQuery(Branch.class);
+        criteriaQuery.from(Branch.class);
+        List<Branch> branchList = loadSession.createQuery(criteriaQuery).getResultList();
+        allBranchList.setAll(branchList);
+        loadSession.close();
+        return allBranchList;
     }
 }

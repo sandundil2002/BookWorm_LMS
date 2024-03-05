@@ -1,8 +1,8 @@
 package lk.ijse.bookworm_lms.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BranchBO;
 import lk.ijse.bookworm_lms.dto.BranchDTO;
@@ -10,6 +10,18 @@ import lk.ijse.bookworm_lms.dto.BranchDTO;
 import java.util.regex.Pattern;
 
 public class AdminDashboardFormController {
+
+    @FXML
+    private TableColumn<?, ?> colClick;
+
+    @FXML
+    private TableColumn<?, ?> colId;
+
+    @FXML
+    private TableColumn<?, ?> colName;
+
+    @FXML
+    private TableView<BranchDTO> tblBranch;
 
     @FXML
     private TextField txtAddress;
@@ -27,6 +39,15 @@ public class AdminDashboardFormController {
     private TextField txtSearch;
 
     private final BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BRANCH);
+
+    public void initialize(){
+        reload();
+    }
+
+    private void setCellValueFactory() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+    }
 
     @FXML
     private void btnSaveOnAction() {
@@ -106,9 +127,18 @@ public class AdminDashboardFormController {
         }
     }
 
+    private void loadAllBranches(){
+        try {
+            tblBranch.setItems(branchBO.getAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void btnClearOnAction() {
         resetBoarderColour();
+        reload();
         txtSearch.setText("");
         txtName.setText("");
         txtManager.setText("");
@@ -155,6 +185,11 @@ public class AdminDashboardFormController {
             return false;
         }
         return true;
+    }
+
+    private void reload(){
+        loadAllBranches();
+        setCellValueFactory();
     }
 
     private void resetBoarderColour(){

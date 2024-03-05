@@ -1,11 +1,16 @@
 package lk.ijse.bookworm_lms.bo.custom.impl;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
+import javafx.collections.transformation.FilteredList;
 import lk.ijse.bookworm_lms.bo.custom.BranchBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.BranchDAO;
 import lk.ijse.bookworm_lms.dto.BranchDTO;
 import lk.ijse.bookworm_lms.entity.Branch;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BranchBOImpl implements BranchBO {
@@ -43,7 +48,18 @@ public class BranchBOImpl implements BranchBO {
     }
 
     @Override
-    public List<BranchDTO> getAll() throws Exception {
-        return null;
+    public ObservableList<BranchDTO> getAll() throws Exception {
+        List<Branch> branchList = branchDAO.getAll();
+        List<BranchDTO> branchDTOS = new ArrayList<>();
+        for (Branch branch : branchList){
+            branchDTOS.add(new BranchDTO(
+                    branch.getId(),
+                    branch.getName(),
+                    branch.getManager(),
+                    branch.getAddress(),
+                    branch.getEmail()
+            ));
+        }
+        return FXCollections.observableArrayList(branchDTOS);
     }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.bookworm_lms.dao.custom.impl;
 
+import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.config.SessionFactoryConfig;
 import lk.ijse.bookworm_lms.dao.custom.UserDAO;
 import lk.ijse.bookworm_lms.entity.User;
@@ -36,7 +37,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getAll() throws Exception {
+    public ObservableList<User> getAll() throws Exception {
         return null;
     }
 

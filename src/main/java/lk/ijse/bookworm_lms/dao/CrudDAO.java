@@ -1,5 +1,6 @@
 package lk.ijse.bookworm_lms.dao;
 
+import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.entity.Admin;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface CrudDAO<T> extends SuperDAO{
 
     T search(String id) throws Exception;
 
-    List<T> getAll() throws Exception;
+    ObservableList<T> getAll() throws Exception;
 }

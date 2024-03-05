@@ -1,5 +1,6 @@
 package lk.ijse.bookworm_lms.bo.custom.impl;
 
+import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.bo.custom.UserBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.UserDAO;
@@ -38,7 +39,7 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public List<UserDTO> getAll() throws Exception {
+    public ObservableList<UserDTO> getAll() throws Exception {
         return null;
     }
 

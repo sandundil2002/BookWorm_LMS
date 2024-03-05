@@ -1,5 +1,6 @@
 package lk.ijse.bookworm_lms.bo.custom.impl;
 
+import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.bo.custom.AdminBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.AdminDAO;
@@ -35,7 +36,7 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
-    public List<AdminDTO> getAll() throws Exception {
+    public ObservableList<AdminDTO> getAll() throws Exception {
         return null;
     }
 
