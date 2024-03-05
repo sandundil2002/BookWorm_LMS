@@ -16,6 +16,7 @@ public class SessionFactoryConfig {
         Metadata metadata = new MetadataSources(serviceRegistry).
                 addAnnotatedClass(User.class).
                 addAnnotatedClass(Admin.class).
+                addAnnotatedClass(Branch.class).
                 getMetadataBuilder().build();
         sessionFactory = metadata.buildSessionFactory();
     }

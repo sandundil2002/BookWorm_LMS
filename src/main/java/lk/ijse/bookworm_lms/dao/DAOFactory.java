@@ -1,8 +1,6 @@
 package lk.ijse.bookworm_lms.dao;
 
-import lk.ijse.bookworm_lms.dao.custom.impl.AdminDAOImpl;
-import lk.ijse.bookworm_lms.dao.custom.impl.UserDAOImpl;
-
+import lk.ijse.bookworm_lms.dao.custom.impl.*;
 public class DAOFactory {
     private static DAOFactory daoFactory;
 
@@ -13,7 +11,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes{
-        USER,ADMIN
+        USER,ADMIN,BRANCH
     }
 
     public SuperDAO getDAO(DAOTypes daoTypes){
@@ -22,6 +20,8 @@ public class DAOFactory {
                 return new UserDAOImpl();
             case ADMIN:
                 return new AdminDAOImpl();
+            case BRANCH:
+                return new BranchDAOImpl();
             default:
                 return null;
         }
