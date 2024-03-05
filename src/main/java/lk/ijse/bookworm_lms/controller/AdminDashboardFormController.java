@@ -41,6 +41,7 @@ public class AdminDashboardFormController {
                 boolean isSaved = branchBO.save(branchDTO);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Branch Registered Successfully").show();
+                    btnClearOnAction();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Branch Registration Failed").show();
                 }
@@ -53,6 +54,7 @@ public class AdminDashboardFormController {
     @FXML
     private void btnUpdateOnAction() {
         String id = txtSearch.getText();
+
         if (Pattern.compile("\\d+").matcher(id).matches() && validateBranch()) {
             String name = txtName.getText();
             String manager = txtManager.getText();
@@ -64,20 +66,54 @@ public class AdminDashboardFormController {
                 boolean isUpdated = branchBO.update(id,branchDTO);
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Branch Updated Successfully").show();
+                    btnClearOnAction();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Branch not found").show();
+                    txtSearch.setStyle("-fx-border-color:#ff0000;");
+                    txtSearch.requestFocus();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             new Alert(Alert.AlertType.WARNING, "Invalid Branch ID").show();
+            txtSearch.setStyle("-fx-border-color:#ff0000;");
+            txtSearch.requestFocus();
         }
     }
 
     @FXML
     private void btnDeleteOnAction() {
+        String id = txtSearch.getText();
+        if (Pattern.compile("\\d+").matcher(id).matches()){
+            try {
+                boolean isDeleted = branchBO.delete(id);
+                if (isDeleted) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Branch Delete Successfully").show();
+                    btnClearOnAction();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Branch not found").show();
+                    txtSearch.setStyle("-fx-border-color:#ff0000;");
+                    txtSearch.requestFocus();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }  else {
+            new Alert(Alert.AlertType.WARNING, "Invalid Branch ID").show();
+            txtSearch.setStyle("-fx-border-color:#ff0000;");
+            txtSearch.requestFocus();
+        }
+    }
 
+    @FXML
+    private void btnClearOnAction() {
+        resetBoarderColour();
+        txtSearch.setText("");
+        txtName.setText("");
+        txtManager.setText("");
+        txtAddress.setText("");
+        txtMail.setText("");
     }
 
     private boolean validateBranch(){
@@ -119,5 +155,13 @@ public class AdminDashboardFormController {
             return false;
         }
         return true;
+    }
+
+    private void resetBoarderColour(){
+        txtSearch.setStyle("-fx-border-color: black");
+        txtName.setStyle("-fx-border-color: black");
+        txtManager.setStyle("-fx-border-color: black");
+        txtAddress.setStyle("-fx-border-color: black");
+        txtMail.setStyle("-fx-border-color: black");
     }
 }

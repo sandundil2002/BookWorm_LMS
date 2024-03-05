@@ -34,7 +34,7 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public boolean delete(String id) throws Exception {
-        return false;
+        return branchDAO.delete(id);
     }
 
     @Override

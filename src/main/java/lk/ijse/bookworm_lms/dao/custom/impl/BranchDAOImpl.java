@@ -13,16 +13,26 @@ public class BranchDAOImpl implements BranchDAO {
     @Override
     public boolean save(Branch addBranch) throws Exception {
         Session saveSession = SessionFactoryConfig.getInstance().getSession();
-        Transaction saveTransaction = saveSession.beginTransaction();
+        Transaction saveBranch = saveSession.beginTransaction();
         saveSession.persist(addBranch);
-        saveTransaction.commit();
+        saveBranch.commit();
         saveSession.close();
         return true;
     }
 
     @Override
     public boolean delete(String id) throws Exception {
-        return false;
+        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction deleteTransaction = deleteSession.beginTransaction();
+        Branch deleteBranch = deleteSession.get(Branch.class, id);
+        if (deleteBranch != null){
+            deleteSession.remove(deleteBranch);
+            deleteTransaction.commit();
+            deleteSession.close();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
