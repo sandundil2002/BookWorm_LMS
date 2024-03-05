@@ -27,4 +27,10 @@ public class Branch {
     @Column(name = "email")
     private String email;
 
+    public Branch(String name, String manager, String address, String email) {
+        this.name = name;
+        this.manager = manager;
+        this.address = address;
+        this.email = email;
+    }
 }

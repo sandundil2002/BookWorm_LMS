@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BranchBO;
+import lk.ijse.bookworm_lms.dto.BranchDTO;
 
 import java.util.regex.Pattern;
 
@@ -29,7 +30,24 @@ public class AdminDashboardFormController {
 
     @FXML
     private void btnSaveOnAction() {
+        if (validateBranch()){
+            String name = txtName.getText();
+            String manager = txtManager.getText();
+            String address = txtAddress.getText();
+            String email = txtMail.getText();
 
+            BranchDTO branchDTO = new BranchDTO(name,manager,address,email);
+            try {
+                boolean isSaved = branchBO.save(branchDTO);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Branch Registered Successfully").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Branch Registration Failed").show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

@@ -4,6 +4,7 @@ import lk.ijse.bookworm_lms.bo.custom.BranchBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.BranchDAO;
 import lk.ijse.bookworm_lms.dto.BranchDTO;
+import lk.ijse.bookworm_lms.entity.Branch;
 
 import java.util.List;
 
@@ -12,7 +13,12 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public boolean save(BranchDTO dto) throws Exception {
-        return false;
+        return branchDAO.save(new Branch(
+                dto.getName(),
+                dto.getManager(),
+                dto.getAddress(),
+                dto.getEmail()
+        ));
     }
 
     @Override
