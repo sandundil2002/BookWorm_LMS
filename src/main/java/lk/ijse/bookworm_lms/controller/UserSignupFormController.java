@@ -37,7 +37,7 @@ public class UserSignupFormController {
 
             UserDTO userDTO = new UserDTO(name, email, password);
             try {
-                boolean isSaved = userBO.save(userDTO);
+                boolean isSaved = userBO.saveUser(userDTO);
                 if (isSaved){
                     new Alert(Alert.AlertType.CONFIRMATION, "User Registered Successfully").show();
                     btnBackOnAction();

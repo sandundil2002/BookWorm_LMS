@@ -17,7 +17,7 @@ public class BranchBOImpl implements BranchBO {
     private final BranchDAO branchDAO = (BranchDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.BRANCH);
 
     @Override
-    public boolean save(BranchDTO dto) throws Exception {
+    public boolean saveBranch(BranchDTO dto) throws Exception {
         return branchDAO.save(new Branch(
                 dto.getId(),
                 dto.getName(),
@@ -28,7 +28,7 @@ public class BranchBOImpl implements BranchBO {
     }
 
     @Override
-    public boolean update(String id,BranchDTO dto) throws Exception {
+    public boolean updateBranch(String id,BranchDTO dto) throws Exception {
         return branchDAO.update(id,new Branch(
                 dto.getName(),
                 dto.getManager(),
@@ -38,17 +38,17 @@ public class BranchBOImpl implements BranchBO {
     }
 
     @Override
-    public boolean delete(String id) throws Exception {
+    public boolean deleteBranch(String id) throws Exception {
         return branchDAO.delete(id);
     }
 
     @Override
-    public BranchDTO search(String id) throws Exception {
+    public BranchDTO searchBranch(String id) throws Exception {
         return null;
     }
 
     @Override
-    public ObservableList<BranchDTO> getAll() throws Exception {
+    public ObservableList<BranchDTO> getAllBranches() throws Exception {
         List<Branch> branchList = branchDAO.getAll();
         List<BranchDTO> branchDTOS = new ArrayList<>();
         for (Branch branch : branchList){

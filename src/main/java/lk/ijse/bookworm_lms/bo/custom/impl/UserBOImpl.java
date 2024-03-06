@@ -15,7 +15,7 @@ public class UserBOImpl implements UserBO {
     private final UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     @Override
-    public boolean save(UserDTO dto) throws Exception {
+    public boolean saveUser(UserDTO dto) throws Exception {
         return userDAO.save(new User(
                 dto.getName(),
                 dto.getEmail(),
@@ -24,22 +24,22 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
-    public boolean update(String id , UserDTO dto) throws Exception {
+    public boolean updateUser(String id , UserDTO dto) throws Exception {
         return false;
     }
 
     @Override
-    public boolean delete(String id) throws Exception {
+    public boolean deleteUser(String id) throws Exception {
         return false;
     }
 
     @Override
-    public UserDTO search(String id) throws Exception {
+    public UserDTO searchUser(String id) throws Exception {
         return null;
     }
 
     @Override
-    public ObservableList<UserDTO> getAll() throws Exception {
+    public ObservableList<UserDTO> getAllUsers() throws Exception {
         return null;
     }
 

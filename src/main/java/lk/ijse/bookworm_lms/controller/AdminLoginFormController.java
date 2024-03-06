@@ -106,7 +106,7 @@ public class AdminLoginFormController {
     private void addDefaultAdmin(){
         AdminDTO adminDTO = new AdminDTO("sandun","1234");
         try {
-            adminBO.save(adminDTO);
+            adminBO.saveAdmin(adminDTO);
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

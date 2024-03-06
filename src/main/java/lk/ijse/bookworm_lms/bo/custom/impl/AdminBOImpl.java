@@ -13,7 +13,7 @@ public class AdminBOImpl implements AdminBO {
     private final AdminDAO adminDAO = (AdminDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ADMIN);
 
     @Override
-    public boolean save(AdminDTO dto) throws Exception {
+    public boolean saveAdmin(AdminDTO dto) throws Exception {
         return adminDAO.save(new Admin(
                 dto.getName(),
                 dto.getPassword()
@@ -21,22 +21,22 @@ public class AdminBOImpl implements AdminBO {
     }
 
     @Override
-    public boolean update(String id , AdminDTO dto) throws Exception {
+    public boolean updateAdmin(String id , AdminDTO dto) throws Exception {
         return false;
     }
 
     @Override
-    public boolean delete(String id) throws Exception {
+    public boolean deleteAdmin(String id) throws Exception {
         return false;
     }
 
     @Override
-    public AdminDTO search(String id) throws Exception {
+    public AdminDTO searchAdmin(String id) throws Exception {
         return null;
     }
 
     @Override
-    public ObservableList<AdminDTO> getAll() throws Exception {
+    public ObservableList<AdminDTO> getAllAdmins() throws Exception {
         return null;
     }
 

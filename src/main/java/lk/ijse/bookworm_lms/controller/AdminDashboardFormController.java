@@ -59,7 +59,7 @@ public class AdminDashboardFormController {
 
             BranchDTO branchDTO = new BranchDTO(name,manager,address,email);
             try {
-                boolean isSaved = branchBO.save(branchDTO);
+                boolean isSaved = branchBO.saveBranch(branchDTO);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Branch Registered Successfully").show();
                     btnClearOnAction();
@@ -84,7 +84,7 @@ public class AdminDashboardFormController {
 
             BranchDTO branchDTO = new BranchDTO(name,manager,address,email);
             try {
-                boolean isUpdated = branchBO.update(id,branchDTO);
+                boolean isUpdated = branchBO.updateBranch(id,branchDTO);
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Branch Updated Successfully").show();
                     btnClearOnAction();
@@ -108,7 +108,7 @@ public class AdminDashboardFormController {
         String id = txtSearch.getText();
         if (Pattern.compile("\\d+").matcher(id).matches()){
             try {
-                boolean isDeleted = branchBO.delete(id);
+                boolean isDeleted = branchBO.deleteBranch(id);
                 if (isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Branch Delete Successfully").show();
                     btnClearOnAction();
@@ -129,7 +129,7 @@ public class AdminDashboardFormController {
 
     private void loadAllBranches(){
         try {
-            tblBranch.setItems(branchBO.getAll());
+            tblBranch.setItems(branchBO.getAllBranches());
         } catch (Exception e) {
             e.printStackTrace();
         }
