@@ -1,5 +1,7 @@
 package lk.ijse.bookworm_lms.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -7,12 +9,13 @@ import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BranchBO;
 import lk.ijse.bookworm_lms.dto.BranchDTO;
 
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class AdminDashboardFormController {
 
     @FXML
-    private TableColumn<?, ?> colClick;
+    private TableColumn<?, ?> colManager;
 
     @FXML
     private TableColumn<?, ?> colId;
@@ -42,11 +45,13 @@ public class AdminDashboardFormController {
 
     public void initialize(){
         reload();
+        openBranch();
     }
 
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colManager.setCellValueFactory(new PropertyValueFactory<>("manager"));
     }
 
     @FXML
@@ -124,6 +129,25 @@ public class AdminDashboardFormController {
             new Alert(Alert.AlertType.WARNING, "Invalid Branch ID").show();
             txtSearch.setStyle("-fx-border-color:#ff0000;");
             txtSearch.requestFocus();
+        }
+    }
+
+    private void openBranch(){
+        try {
+            tblBranch.setOnMouseClicked(event -> {
+                BranchDTO selectedItem = tblBranch.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to open this Branch?", ok, no).showAndWait();
+                    if (result.orElse(no) == ok) {
+                        System.out.println(selectedItem.getId());
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
