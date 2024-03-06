@@ -1,7 +1,5 @@
 package lk.ijse.bookworm_lms.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -129,6 +127,30 @@ public class AdminDashboardFormController {
             new Alert(Alert.AlertType.WARNING, "Invalid Branch ID").show();
             txtSearch.setStyle("-fx-border-color:#ff0000;");
             txtSearch.requestFocus();
+        }
+    }
+
+
+    @FXML
+    private void btnSearchOnAction(){
+        String id = txtSearch.getText();
+        if (Pattern.compile("\\d+").matcher(id).matches()) {
+            try {
+                BranchDTO branchDTO = branchBO.searchBranch(id);
+                if (branchDTO != null) {
+                    txtName.setText(branchDTO.getName());
+                    txtManager.setText(branchDTO.getManager());
+                    txtAddress.setText(branchDTO.getAddress());
+                    txtMail.setText(branchDTO.getEmail());
+                    txtSearch.setStyle("-fx-border-color:black;");
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Please enter a valid id").show();
+                    txtSearch.setStyle("-fx-border-color:#ff0000;");
+                    txtSearch.requestFocus();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 

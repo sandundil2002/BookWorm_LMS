@@ -14,7 +14,7 @@ import java.util.List;
 public class BranchDAOImpl implements BranchDAO {
 
     @Override
-    public boolean save(Branch addBranch) throws Exception {
+    public boolean save(Branch addBranch) {
         Session saveSession = SessionFactoryConfig.getInstance().getSession();
         Transaction saveBranch = saveSession.beginTransaction();
         saveSession.persist(addBranch);
@@ -24,7 +24,7 @@ public class BranchDAOImpl implements BranchDAO {
     }
 
     @Override
-    public boolean delete(String id) throws Exception {
+    public boolean delete(String id) {
         Session deleteSession = SessionFactoryConfig.getInstance().getSession();
         Transaction deleteTransaction = deleteSession.beginTransaction();
         Branch deleteBranch = deleteSession.get(Branch.class, id);
@@ -39,7 +39,7 @@ public class BranchDAOImpl implements BranchDAO {
     }
 
     @Override
-    public boolean update(String id , Branch dto) throws Exception {
+    public boolean update(String id , Branch dto) {
         Session updateSession = SessionFactoryConfig.getInstance().getSession();
         Transaction updateTransaction = updateSession.beginTransaction();
         Branch existingBranch = updateSession.get(Branch.class, id);
@@ -60,12 +60,17 @@ public class BranchDAOImpl implements BranchDAO {
     }
 
     @Override
-    public Branch search(String id) throws Exception {
-        return null;
+    public Branch search(String id) {
+        Session searchSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction searchTransaction = searchSession.beginTransaction();
+        Branch getBranches = searchSession.get(Branch.class,id);
+        searchTransaction.commit();
+        searchSession.close();
+        return getBranches;
     }
 
     @Override
-    public ObservableList<Branch> getAll(){
+    public ObservableList<Branch> getAll() {
         ObservableList<Branch> allBranchList = FXCollections.observableArrayList();
         Session loadSession = SessionFactoryConfig.getInstance().getSession();
         CriteriaQuery<Branch> criteriaQuery = loadSession.getCriteriaBuilder().createQuery(Branch.class);

@@ -42,6 +42,15 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public BranchDTO searchBranch(String id) throws Exception {
+        Branch branch = branchDAO.search(id);
+        if (branch != null){
+            return new BranchDTO(
+                    branch.getId(),
+                    branch.getName(),
+                    branch.getManager(),
+                    branch.getAddress(),
+                    branch.getEmail());
+        }
         return null;
     }
 
