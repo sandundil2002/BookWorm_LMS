@@ -16,4 +16,12 @@ public class BookDTO {
     private String genre;
     private String status;
     private Timestamp dateTime;
+
+    public BookDTO(String branch, String title, String author, String genre, String status) {
+        this.branch = branch;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.status = status;
+    }
 }

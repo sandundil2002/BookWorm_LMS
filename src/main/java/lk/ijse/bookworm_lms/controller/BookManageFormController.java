@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
+import lk.ijse.bookworm_lms.dto.BookDTO;
 
 import java.io.IOException;
 import java.time.*;
@@ -90,24 +91,100 @@ public class BookManageFormController {
 
     @FXML
     private void btnDeleteOnAction() {
-
+        String id = txtSearch.getText();
+        if (Pattern.compile("\\d+").matcher(id).matches()) {
+            try {
+                boolean isDeleted = bookBO.deleteBook(id);
+                if (isDeleted){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Book Delete Successfully").show();
+                    btnClearOnAction();
+                }  else {
+                    new Alert(Alert.AlertType.ERROR, "Book not found").show();
+                    txtSearch.setStyle("-fx-border-color:#ff0000;");
+                    txtSearch.requestFocus();
+                }
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Invalid book id").show();
+                txtSearch.setStyle("-fx-border-color:#ff0000;");
+                txtSearch.requestFocus();
+            }
+        }
     }
 
     @FXML
     private void btnSaveOnAction() {
+        if (validateBook()){
+            String branch = txtBranch.getText();
+            String title = txtTitle.getText();
+            String author = txtAuthor.getText();
+            String genre = txtGenre.getText();
+            String status = "Availble";
 
+            BookDTO bookDTO = new BookDTO(branch,title,author,genre,status);
+            try {
+                boolean isSaved = bookBO.saveBook(bookDTO);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Book Added Successfully").show();
+                    btnClearOnAction();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Book Added Failed").show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
     private void btnSearchOnAction() {
-        if (validateBook()){
-
+        String id = txtSearch.getText();
+        if (Pattern.compile("\\d+").matcher(id).matches()) {
+            try {
+                BookDTO bookDTO = bookBO.searchBook(id);
+                if (bookDTO != null){
+                    txtBranch.setText(bookDTO.getBranch());
+                    txtTitle.setText(bookDTO.getTitle());
+                    txtAuthor.setText(bookDTO.getAuthor());
+                    txtGenre.setText(bookDTO.getGenre());
+                }  else {
+                    new Alert(Alert.AlertType.ERROR, "Please enter a valid book id").show();
+                    txtSearch.setStyle("-fx-border-color:#ff0000;");
+                    txtSearch.requestFocus();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @FXML
     private void btnUpdateOnAction() {
+        String id = txtSearch.getText();
 
+        if (Pattern.compile("\\d+").matcher(id).matches() && validateBook()) {
+            String branch = txtBranch.getText();
+            String title = txtTitle.getText();
+            String author = txtAuthor.getText();
+            String genre = txtGenre.getText();
+            String status = "Availble";
+
+            BookDTO bookDTO = new BookDTO(branch,title,author,genre,status);
+            try {
+                boolean isUpdated = bookBO.saveBook(bookDTO);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Book Update Successfully").show();
+                    btnClearOnAction();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Book Update Failed").show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }  else {
+            new Alert(Alert.AlertType.WARNING, "Invalid Book ID").show();
+            txtSearch.setStyle("-fx-border-color:#ff0000;");
+            txtSearch.requestFocus();
+        }
     }
 
     private boolean validateBook(){
