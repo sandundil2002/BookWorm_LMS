@@ -2,9 +2,13 @@ package lk.ijse.bookworm_lms.controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,13 +16,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class BranchFormController {
+public class BookManageFormController {
 
     @FXML
     private AnchorPane pane;
 
     @FXML
-    private TableColumn<?, ?> colAuther;
+    private TableColumn<?, ?> colAuthor;
 
     @FXML
     private TableColumn<?, ?> colBookId;
@@ -51,7 +55,7 @@ public class BranchFormController {
     private TableView<?> tblCustomer;
 
     @FXML
-    private TextField txtAuther;
+    private TextField txtAuthor;
 
     @FXML
     private TextField txtBranch;
@@ -65,12 +69,12 @@ public class BranchFormController {
     @FXML
     private TextField txtTitle;
 
-    private final int branchId = AdminDashboardFormController.branchId;
+    private final String branchName = AdminDashboardFormController.branchName;
 
     public void initialize(){
-        updateRealTime(lblTime);
-        lblTitle.setText("Welcome To Branch "+branchId);
-        txtBranch.setText("Branch "+branchId);
+        //updateRealTime(lblTime);
+        lblTitle.setText("Welcome To "+branchName+" Branch");
+        txtBranch.setText(branchName);
     }
 
     @FXML
@@ -98,6 +102,21 @@ public class BranchFormController {
 
     }
 
+    @FXML
+    private void btnBackOnAction() {
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminDashboardForm.fxml"));
+            Scene scene = new Scene(anchorPane);
+            Stage stage = (Stage) pane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Admin Dashboard");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
+        }
+    }
+
     private void updateRealTime(Label label) {
         lblDate.setText(LocalDate.now().toString());
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
@@ -107,5 +126,4 @@ public class BranchFormController {
             Platform.runLater(() -> label.setText(currentTime));
         }, 0, 1, TimeUnit.SECONDS);
     }
-
 }

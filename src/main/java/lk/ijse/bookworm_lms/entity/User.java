@@ -2,6 +2,9 @@ package lk.ijse.bookworm_lms.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Timestamp;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,6 +27,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "dateTime")
+    @CreationTimestamp
+    private Timestamp dateTime;
 
     public User(String name, String email, String password) {
         this.name = name;

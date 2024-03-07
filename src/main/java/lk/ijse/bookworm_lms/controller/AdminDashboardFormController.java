@@ -47,7 +47,7 @@ public class AdminDashboardFormController {
     @FXML
     private TextField txtSearch;
 
-    public static int branchId;
+    public static String branchName;
 
     private final BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BRANCH);
 
@@ -174,7 +174,7 @@ public class AdminDashboardFormController {
 
                     Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to open this Branch?", ok, no).showAndWait();
                     if (result.orElse(no) == ok) {
-                        branchId = selectedItem.getId();
+                        branchName = selectedItem.getName();
                         loadBranch();
                     }
                 }
@@ -194,11 +194,11 @@ public class AdminDashboardFormController {
 
     private void loadBranch(){
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/branchForm.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/bookManageForm.fxml"));
             Scene scene = new Scene(anchorPane);
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Branch "+branchId);
+            stage.setTitle(branchName+" Branch");
             stage.setResizable(false);
             stage.show();
         } catch (IOException e) {

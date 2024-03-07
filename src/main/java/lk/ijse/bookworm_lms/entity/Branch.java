@@ -3,6 +3,8 @@ package lk.ijse.bookworm_lms.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.*;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -26,6 +28,9 @@ public class Branch {
 
     @Column(name = "email")
     private String email;
+
+    @ManyToMany
+    private List<Book> bookList = new ArrayList<>();
 
     public Branch(String name, String manager, String address, String email) {
         this.name = name;
