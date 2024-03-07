@@ -42,7 +42,7 @@
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label fx:id="lblTime" layoutX="958.0" layoutY="3.0" prefHeight="44.0" prefWidth="209.0" text="Label" />
-      <Label fx:id="lblDate" layoutX="993.0" layoutY="47.0" prefHeight="26.0" prefWidth="146.0" styleClass="dateLabel" stylesheets="@../style/branch-form.css" text="Label" />
+      <Label fx:id="lblTime" layoutX="1008.0" layoutY="3.0" prefHeight="44.0" prefWidth="176.0" text="Label" />
+      <Label fx:id="lblDate" layoutX="1039.0" layoutY="41.0" prefHeight="26.0" prefWidth="146.0" styleClass="dateLabel" stylesheets="@../style/branch-form.css" text="Label" />
    </children>
 </AnchorPane>

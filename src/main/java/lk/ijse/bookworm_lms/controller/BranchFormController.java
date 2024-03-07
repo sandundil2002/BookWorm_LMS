@@ -1,8 +1,16 @@
 package lk.ijse.bookworm_lms.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class BranchFormController {
 
@@ -60,7 +68,9 @@ public class BranchFormController {
     private final int branchId = AdminDashboardFormController.branchId;
 
     public void initialize(){
+        updateRealTime(lblTime);
         lblTitle.setText("Welcome To Branch "+branchId);
+        txtBranch.setText("Branch "+branchId);
     }
 
     @FXML
@@ -86,6 +96,16 @@ public class BranchFormController {
     @FXML
     private void btnUpdateOnAction() {
 
+    }
+
+    private void updateRealTime(Label label) {
+        lblDate.setText(LocalDate.now().toString());
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(() -> {
+            String currentTime = LocalDateTime.now().format(timeFormatter);
+            Platform.runLater(() -> label.setText(currentTime));
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
 }
