@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1200.0" stylesheets="@../style/admin-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.AdminDashboardFormController">
+<AnchorPane fx:id="pane" prefHeight="720.0" prefWidth="1200.0" stylesheets="@../style/admin-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.AdminDashboardFormController">
    <children>
       <Label layoutX="433.0" layoutY="11.0" styleClass="title" stylesheets="@../style/admin-dashboard-form.css" text="Admin Dashboard" underline="true" />
       <TextField fx:id="txtSearch" layoutX="474.0" layoutY="107.0" onAction="#btnSearchOnAction" prefHeight="36.0" prefWidth="264.0" promptText="Search Branch ID" styleClass="SearchFiled" stylesheets="@../style/admin-dashboard-form.css" />

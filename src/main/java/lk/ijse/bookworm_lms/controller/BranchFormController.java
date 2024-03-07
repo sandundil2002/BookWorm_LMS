@@ -2,8 +2,12 @@ package lk.ijse.bookworm_lms.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 public class BranchFormController {
+
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private TableColumn<?, ?> colAuther;
@@ -52,6 +56,12 @@ public class BranchFormController {
 
     @FXML
     private TextField txtTitle;
+
+    private final int branchId = AdminDashboardFormController.branchId;
+
+    public void initialize(){
+        lblTitle.setText("Welcome To Branch "+branchId);
+    }
 
     @FXML
     private void btnClearOnAction() {

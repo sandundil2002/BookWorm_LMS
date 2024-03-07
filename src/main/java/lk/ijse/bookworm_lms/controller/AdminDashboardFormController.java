@@ -1,16 +1,24 @@
 package lk.ijse.bookworm_lms.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BranchBO;
 import lk.ijse.bookworm_lms.dto.BranchDTO;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class AdminDashboardFormController {
+
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private TableColumn<?, ?> colManager;
@@ -38,6 +46,8 @@ public class AdminDashboardFormController {
 
     @FXML
     private TextField txtSearch;
+
+    public static int branchId;
 
     private final BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BRANCH);
 
@@ -164,7 +174,8 @@ public class AdminDashboardFormController {
 
                     Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to open this Branch?", ok, no).showAndWait();
                     if (result.orElse(no) == ok) {
-                        System.out.println(selectedItem.getId());
+                        branchId = selectedItem.getId();
+                        loadBranch();
                     }
                 }
             });
@@ -178,6 +189,20 @@ public class AdminDashboardFormController {
             tblBranch.setItems(branchBO.getAllBranches());
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void loadBranch(){
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/branchForm.fxml"));
+            Scene scene = new Scene(anchorPane);
+            Stage stage = (Stage) pane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Branch "+branchId);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
         }
     }
 
