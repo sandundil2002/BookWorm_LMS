@@ -26,15 +26,15 @@
       <TextField fx:id="txtBranch" editable="false" layoutX="333.0" layoutY="90.0" minHeight="23.0" minWidth="117.0" prefHeight="38.0" prefWidth="176.0" promptText="Branch Name" styleClass="UserFiled" stylesheets="@../style/book-manage-form.css" />
       <JFXButton layoutX="661.0" layoutY="166.0" onAction="#btnDeleteOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../style/book-manage-form.css" text="Delete" />
       <JFXButton layoutX="421.0" layoutY="166.0" onAction="#btnUpdateOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../style/book-manage-form.css" text="Update" />
-      <TableView fx:id="tblCustomer" layoutX="40.0" layoutY="236.0" prefHeight="454.0" prefWidth="1127.0" styleClass="table" stylesheets="@../style/book-manage-form.css">
+      <TableView fx:id="tblBook" layoutX="40.0" layoutY="236.0" prefHeight="454.0" prefWidth="1127.0" styleClass="table" stylesheets="@../style/book-manage-form.css">
          <columns>
             <TableColumn fx:id="colBookId" prefWidth="96.80001831054688" text="Book Id" />
-            <TableColumn fx:id="colBranchId" prefWidth="106.4000244140625" text="Branch " />
-            <TableColumn fx:id="colTitle" prefWidth="208.00001525878906" text="Title" />
-            <TableColumn fx:id="colAuthor" prefWidth="204.79998779296875" text="Author" />
-            <TableColumn fx:id="colGenre" prefWidth="168.7999267578125" text="Genre" />
-            <TableColumn fx:id="colStatus" prefWidth="147.20001220703125" text="Status" />
-            <TableColumn fx:id="colTimeStamp" prefWidth="189.60002441406255" text="Time Stamp" />
+            <TableColumn fx:id="colBranch" prefWidth="106.4000244140625" text="Branch " />
+            <TableColumn fx:id="colTitle" prefWidth="192.0" text="Title" />
+            <TableColumn fx:id="colAuthor" prefWidth="195.20001220703125" text="Author" />
+            <TableColumn fx:id="colGenre" prefWidth="136.0" text="Genre" />
+            <TableColumn fx:id="colStatus" prefWidth="135.2000732421875" text="Status" />
+            <TableColumn fx:id="colTimeStamp" prefWidth="263.19989013671875" text="Time Stamp" />
          </columns>
       </TableView>
       <JFXButton layoutX="171.0" layoutY="166.0" onAction="#btnSaveOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../style/book-manage-form.css" text="Save" />

@@ -13,6 +13,6 @@ public interface BookBO  extends SuperBO {
 
     BookDTO searchBook(String id) throws Exception;
 
-    ObservableList<BookDTO> getAllBooks() throws Exception;
+    ObservableList<BookDTO> getAllBooks(int branch) throws Exception;
 
 }

@@ -1,12 +1,15 @@
 package lk.ijse.bookworm_lms.dao.custom.impl;
 
-import javafx.collections.ObservableList;
+import jakarta.persistence.criteria.*;
+import javafx.collections.*;
 import lk.ijse.bookworm_lms.config.SessionFactoryConfig;
 import lk.ijse.bookworm_lms.dao.custom.BookDAO;
 import lk.ijse.bookworm_lms.entity.Book;
 import lk.ijse.bookworm_lms.entity.Branch;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class BookDAOImpl implements BookDAO {
     @Override
@@ -21,7 +24,17 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public boolean delete(String id){
-        return false;
+        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction deleteTransaction = deleteSession.beginTransaction();
+        Book deleteBook = deleteSession.get(Book.class, id);
+        if (deleteBook != null){
+            deleteSession.remove(deleteBook);
+            deleteTransaction.commit();
+            deleteSession.close();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -58,6 +71,31 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public ObservableList<Book> getAll() {
+        ObservableList<Book> allBookList = FXCollections.observableArrayList();
+        Session loadSession = SessionFactoryConfig.getInstance().getSession();
+        CriteriaQuery<Book> criteriaQuery = loadSession.getCriteriaBuilder().createQuery(Book.class);
+        criteriaQuery.from(Book.class);
+        List<Book> BookList = loadSession.createQuery(criteriaQuery).getResultList();
+        allBookList.setAll(BookList);
+        loadSession.close();
+        return allBookList;
+    }
+
+    @Override
+    public ObservableList<Book> getAll(int branch) {
+      /*  ObservableList<Book> allBookList = FXCollections.observableArrayList();
+        Session session = SessionFactoryConfig.getInstance().getSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
+        Root<Book> root = criteriaQuery.from(Book.class);
+        Predicate predicate = criteriaBuilder.equal(root.get("branchID"), branch);
+        criteriaQuery.where(predicate);
+
+        Query<Book> query = session.createQuery(criteriaQuery);
+        allBookList.addAll(query.getResultList());
+
+        session.close();
+        return allBookList;*/
         return null;
     }
 }

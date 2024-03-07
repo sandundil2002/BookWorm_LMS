@@ -49,6 +49,8 @@ public class AdminDashboardFormController {
 
     public static String branchName;
 
+    public static int branchId;
+
     private final BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BRANCH);
 
     public void initialize(){
@@ -173,6 +175,7 @@ public class AdminDashboardFormController {
 
                     Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to open this Branch?", ok, no).showAndWait();
                     if (result.orElse(no) == ok) {
+                        branchId = selectedItem.getId();
                         branchName = selectedItem.getName();
                         loadBranch();
                     }

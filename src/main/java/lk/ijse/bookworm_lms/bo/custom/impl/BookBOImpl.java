@@ -1,11 +1,15 @@
 package lk.ijse.bookworm_lms.bo.custom.impl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.BookDAO;
 import lk.ijse.bookworm_lms.dto.BookDTO;
 import lk.ijse.bookworm_lms.entity.Book;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookBOImpl implements BookBO {
     private final BookDAO bookDAO = (BookDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.BOOK);
@@ -34,7 +38,7 @@ public class BookBOImpl implements BookBO {
 
     @Override
     public boolean deleteBook(String id) throws Exception {
-        return false;
+        return bookDAO.delete(id);
     }
 
     @Override
@@ -53,7 +57,20 @@ public class BookBOImpl implements BookBO {
     }
 
     @Override
-    public ObservableList<BookDTO> getAllBooks() throws Exception {
-        return null;
+    public ObservableList<BookDTO> getAllBooks(int branch) throws Exception {
+        List<Book> bookList = bookDAO.getAll();
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        for (Book book : bookList){
+            bookDTOS.add(new BookDTO(
+                    book.getId(),
+                    book.getBranch(),
+                    book.getTitle(),
+                    book.getAuthor(),
+                    book.getGenre(),
+                    book.getStatus(),
+                    book.getDateTime()
+            ));
+        }
+        return FXCollections.observableArrayList(bookDTOS);
     }
 }

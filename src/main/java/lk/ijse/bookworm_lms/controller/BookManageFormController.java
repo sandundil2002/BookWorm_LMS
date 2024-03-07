@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
@@ -28,7 +29,7 @@ public class BookManageFormController {
     private TableColumn<?, ?> colBookId;
 
     @FXML
-    private TableColumn<?, ?> colBranchId;
+    private TableColumn<?, ?> colBranch;
 
     @FXML
     private TableColumn<?, ?> colGenre;
@@ -52,7 +53,7 @@ public class BookManageFormController {
     private Label lblTitle;
 
     @FXML
-    private TableView<?> tblCustomer;
+    private TableView<BookDTO> tblBook;
 
     @FXML
     private TextField txtAuthor;
@@ -73,20 +74,34 @@ public class BookManageFormController {
 
     private final String branchName = AdminDashboardFormController.branchName;
 
+    private final int branchId = AdminDashboardFormController.branchId;
+
     public void initialize(){
         //updateRealTime(lblTime);
         lblTitle.setText("Welcome To "+branchName+" Branch");
         txtBranch.setText(branchName);
+        reload();
+    }
+
+    private void setCellValueFactory() {
+        colBookId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colBranch.setCellValueFactory(new PropertyValueFactory<>("branch"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
+        colGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colTimeStamp.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
     }
 
     @FXML
     private void btnClearOnAction() {
         resetBoarderColour();
         txtSearch.setText("");
-        txtBranch.setText("");
+        txtBranch.setText(branchName);
         txtTitle.setText("");
         txtAuthor.setText("");
         txtGenre.setText("");
+        reload();
     }
 
     @FXML
@@ -118,7 +133,7 @@ public class BookManageFormController {
             String title = txtTitle.getText();
             String author = txtAuthor.getText();
             String genre = txtGenre.getText();
-            String status = "Availble";
+            String status = "Available";
 
             BookDTO bookDTO = new BookDTO(branch,title,author,genre,status);
             try {
@@ -187,6 +202,14 @@ public class BookManageFormController {
         }
     }
 
+    private void loadAllBooks(){
+        try {
+            tblBook.setItems(bookBO.getAllBooks(branchId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean validateBook(){
         String title = txtTitle.getText();
         boolean isTitleValidated = Pattern.compile("^[A-Za-z]{1,20}$").matcher(title).matches();
@@ -233,6 +256,11 @@ public class BookManageFormController {
         } catch (IOException e) {
             new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
         }
+    }
+
+    private void reload(){
+        loadAllBooks();
+        setCellValueFactory();
     }
 
     private void resetBoarderColour(){

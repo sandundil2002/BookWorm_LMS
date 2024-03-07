@@ -41,10 +41,10 @@ public class Book {
     @ManyToMany(mappedBy = "bookList")
     private List<Branch> branchList = new ArrayList<>();
 
-    public Book(String branch, String title, String author, String genre, String status) {
+    public Book(String branch, String author, String title, String genre, String status) {
         this.branch = branch;
-        this.title = title;
         this.author = author;
+        this.title = title;
         this.genre = genre;
         this.status = status;
     }
