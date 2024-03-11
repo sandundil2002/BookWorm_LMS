@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.bookworm_lms.controller.user.BookSearchFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="647.0" prefWidth="962.0" stylesheets="@../../style/admin-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.user.BookSearchFormController">
+   <children>
+      <TextField layoutX="14.0" layoutY="14.0" onAction="#btnSearchOnAction" prefHeight="43.0" prefWidth="290.0" promptText="Search Book Name" styleClass="SearchFiled" stylesheets="@../../style/admin-dashboard-form.css" />
+      <TableView fx:id="tblBooks" layoutX="12.0" layoutY="93.0" prefHeight="543.0" prefWidth="934.0" styleClass="table" stylesheets="@../../style/admin-dashboard-form.css">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="83.19997882843018" text="Book Id" />
+          <TableColumn fx:id="colBranch" prefWidth="118.39999389648438" text="Branch" />
+            <TableColumn fx:id="colTitle" prefWidth="133.6000518798828" text="Title" />
+            <TableColumn fx:id="colAuthor" prefWidth="144.79998779296875" text="Author" />
+            <TableColumn fx:id="colGenre" prefWidth="138.39996337890625" text="Genre" />
+            <TableColumn fx:id="colStatus" prefWidth="120.800048828125" text="Status" />
+            <TableColumn fx:id="colDateTime" prefWidth="193.5999755859375" text="Added Data &amp; Time" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>

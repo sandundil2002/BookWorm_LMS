@@ -5,7 +5,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import lk.ijse.bookworm_lms.entity.Book;
 
-public class BookSearchFormController {
+public class BorrowBookFormController {
 
     @FXML
     private TableColumn<?, ?> colAuthor;
@@ -23,17 +23,8 @@ public class BookSearchFormController {
     private TableColumn<?, ?> colId;
 
     @FXML
-    private TableColumn<?, ?> colStatus;
-
-    @FXML
     private TableColumn<?, ?> colTitle;
 
     @FXML
     private TableView<Book> tblBooks;
-
-    @FXML
-    private void btnSearchOnAction() {
-
-    }
-
 }
