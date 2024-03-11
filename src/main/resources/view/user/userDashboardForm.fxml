@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1200.0" stylesheets="@../../style/user-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.user.UserDashboardFormController">
+   <children>
+      <Label layoutX="510.0" layoutY="-2.0" styleClass="title" text="User Dashboard" underline="true" />
+      <Line endX="10.600021362304688" endY="610.3999633789062" layoutX="227.0" layoutY="118.0" startX="10.600021362304688" startY="-118.0" styleClass="line" />
+      <Label layoutX="109.0" layoutY="58.0" text="Book Worm">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <JFXButton layoutX="5.0" layoutY="161.0" onAction="#btnSearchBooksOnAction" prefHeight="44.0" prefWidth="225.0" styleClass="btn" stylesheets="@../../style/user-dashboard-form.css" text="Search Books" />
+      <JFXButton layoutX="5.0" layoutY="261.0" onAction="#btnMyBooksOnAction" prefHeight="44.0" prefWidth="225.0" styleClass="btn" stylesheets="@../../style/user-dashboard-form.css" text="My Books" />
+      <JFXButton layoutX="5.0" layoutY="351.0" onAction="#btnReturnBooksOnAction" prefHeight="44.0" prefWidth="225.0" styleClass="btn" stylesheets="@../../style/user-dashboard-form.css" text="Return Books" />
+      <JFXButton layoutX="5.0" layoutY="441.0" onAction="#btnSettingsOnAction" prefHeight="44.0" prefWidth="225.0" styleClass="btn" stylesheets="@../../style/user-dashboard-form.css" text="Account Settings" />
+      <JFXButton layoutX="5.0" layoutY="661.0" onAction="#btnSignOutOnAction" prefHeight="44.0" prefWidth="225.0" styleClass="btn" stylesheets="@../../style/user-dashboard-form.css" text="Sign Out" />
+      <AnchorPane fx:id="pane" layoutX="238.0" layoutY="67.0" prefHeight="647.0" prefWidth="962.0" />
+      <Label alignment="CENTER" layoutX="272.0" layoutY="711.0" prefHeight="19.0" prefWidth="794.0" text="Copyright 2024 GDSE 68 - All Rights Reserved. MIT License." />
+      <ImageView fitHeight="52.0" fitWidth="58.0" layoutX="12.0" layoutY="11.0" onMouseClicked="#btnBackOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/Back Arrow.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

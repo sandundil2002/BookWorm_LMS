@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.*;
 
 @NoArgsConstructor
 @Data
@@ -28,6 +29,9 @@ public class Branch implements Serializable {
     @ManyToOne
     @JoinColumn(name = "admin_id")
     private Admin admin;
+
+    @OneToMany(mappedBy = "branch")
+    private List<Book> books = new ArrayList<>();
 
     public Branch(String name, String manager, String address, String email) {
         this.name = name;

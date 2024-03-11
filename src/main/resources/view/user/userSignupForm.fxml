@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="pane" prefHeight="622.0" prefWidth="650.0" stylesheets="@../../style/user-signup-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.user.UserSignupFormController">
+   <children>
+      <Label layoutX="217.0" layoutY="30.0" styleClass="title" stylesheets="@../../style/user-signup-form.css" text="Hello User" />
+      <Label layoutX="65.0" layoutY="120.0" styleClass="subtitle" stylesheets="@../../style/user-signup-form.css" text="Please Enter Your Personal Details To Sign up" />
+      <TextField fx:id="txtUsername" layoutX="156.0" layoutY="217.0" maxWidth="346.0" prefHeight="39.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../../style/user-login-form.css" />
+      <Label layoutX="169.0" layoutY="195.0" styleClass="normalTitle" stylesheets="@../../style/admin-login-form.css" text="Your Name" />
+      <TextField fx:id="txtEmail" layoutX="156.0" layoutY="327.0" maxWidth="346.0" prefHeight="39.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../../style/user-login-form.css" />
+      <Label layoutX="169.0" layoutY="305.0" styleClass="normalTitle" stylesheets="@../../style/admin-login-form.css" text="E-mail" />
+      <TextField fx:id="txtPassword" layoutX="156.0" layoutY="437.0" maxWidth="346.0" prefHeight="39.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../../style/user-login-form.css" />
+      <Label layoutX="169.0" layoutY="415.0" styleClass="normalTitle" stylesheets="@../../style/admin-login-form.css" text="Password" />
+      <JFXButton layoutX="261.0" layoutY="518.0" onAction="#btnSignupOnAction" prefHeight="46.0" prefWidth="130.0" styleClass="btn" stylesheets="@../../style/user-signup-form.css" text="Sign Up" />
+      <ImageView fitHeight="58.0" fitWidth="80.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#btnBackOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/Back Arrow.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

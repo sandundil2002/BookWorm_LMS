@@ -15,4 +15,8 @@ module lk.ijse.bookworm_lms {
     opens lk.ijse.bookworm_lms.dto;
     opens lk.ijse.bookworm_lms.dao;
     opens lk.ijse.bookworm_lms.embeddad;
+    exports lk.ijse.bookworm_lms.controller.user;
+    opens lk.ijse.bookworm_lms.controller.user to javafx.fxml;
+    exports lk.ijse.bookworm_lms.controller.admin;
+    opens lk.ijse.bookworm_lms.controller.admin to javafx.fxml;
 }

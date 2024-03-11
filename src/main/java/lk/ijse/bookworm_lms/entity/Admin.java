@@ -24,8 +24,8 @@ public class Admin implements Serializable {
 
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "admin")
-    private List<Branch> branchList = new ArrayList<>();
+    @OneToMany(mappedBy = "admin")
+    private List<Branch> branches = new ArrayList<>();
 
     public Admin(String name, String password) {
         this.name = name;

@@ -32,10 +32,10 @@ public class User implements Serializable {
     private Timestamp dateTime;
 
     @OneToMany(mappedBy = "user")
-    private List<BookTransactionDetails> userBooks = new ArrayList<>();
+    private List<Transaction> transactions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "transaction")
-    private List<Transaction> transactionList = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionDetails> bookTransactionDetails = new ArrayList<>();
 
     public User(String name, String email, String password) {
         this.name = name;

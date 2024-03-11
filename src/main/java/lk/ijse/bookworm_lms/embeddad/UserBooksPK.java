@@ -2,6 +2,7 @@ package lk.ijse.bookworm_lms.embeddad;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
@@ -11,6 +12,9 @@ import lombok.*;
 
 @Embeddable
 public class UserBooksPK implements Serializable {
-    private String transaction_id;
-    private String book_id;
+    @Column(name = "book_id")
+    private int bookId;
+
+    @Column(name = "transaction_id")
+    private int transactionId;
 }

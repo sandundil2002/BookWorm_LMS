@@ -1,6 +1,7 @@
 package lk.ijse.bookworm_lms.config;
 
 import lk.ijse.bookworm_lms.entity.*;
+import lk.ijse.bookworm_lms.entity.Transaction;
 import org.hibernate.*;
 import org.hibernate.boot.*;
 import org.hibernate.boot.registry.*;
@@ -19,6 +20,7 @@ public class SessionFactoryConfig {
                 addAnnotatedClass(Branch.class).
                 addAnnotatedClass(Book.class).
                 addAnnotatedClass(BookTransactionDetails.class).
+                addAnnotatedClass(Transaction.class).
                 getMetadataBuilder().build();
         sessionFactory = metadata.buildSessionFactory();
     }

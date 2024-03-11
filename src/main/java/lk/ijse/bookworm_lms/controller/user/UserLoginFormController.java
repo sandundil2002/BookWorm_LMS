@@ -1,4 +1,4 @@
-package lk.ijse.bookworm_lms.controller;
+package lk.ijse.bookworm_lms.controller.user;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.bookworm_lms.HelloApplication;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.UserBO;
 import lk.ijse.bookworm_lms.entity.User;
@@ -38,6 +37,12 @@ public class UserLoginFormController {
     @FXML
     private void btnSignupOnAction() {
         pane.getChildren().clear();
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/user/userSignupForm.fxml"));
+            pane.getChildren().add(anchorPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -68,7 +73,7 @@ public class UserLoginFormController {
 
     private void loadDashboard(){
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/userDashboardForm.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/user/userDashboardForm.fxml"));
             Scene scene = new Scene(anchorPane);
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(scene);

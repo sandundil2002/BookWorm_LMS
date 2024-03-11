@@ -1,4 +1,4 @@
-package lk.ijse.bookworm_lms.controller;
+package lk.ijse.bookworm_lms.controller.admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,6 @@ import lk.ijse.bookworm_lms.dto.AdminDTO;
 import lk.ijse.bookworm_lms.entity.Admin;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class AdminLoginFormController {
@@ -68,7 +67,7 @@ public class AdminLoginFormController {
 
     private void loadDashboard(){
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminDashboardForm.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/admin/adminDashboardForm.fxml"));
             Scene scene = new Scene(anchorPane);
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(scene);

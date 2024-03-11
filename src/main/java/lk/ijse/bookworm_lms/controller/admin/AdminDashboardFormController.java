@@ -1,4 +1,4 @@
-package lk.ijse.bookworm_lms.controller;
+package lk.ijse.bookworm_lms.controller.admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -193,7 +193,7 @@ public class AdminDashboardFormController {
 
     private void loadBranch(){
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/bookManageForm.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/admin/bookManageForm.fxml"));
             Scene scene = new Scene(anchorPane);
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(scene);

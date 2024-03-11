@@ -16,12 +16,16 @@ public class BookTransactionDetails {
     private UserBooksPK userBooksPK;
 
     @ManyToOne
-    @JoinColumn(name = "transaction_id",referencedColumnName = "transaction_id",insertable = false,updatable = false)
-    private Transaction transaction;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
 
     @ManyToOne
-    @JoinColumn(name = "book_id",referencedColumnName = "book_id",insertable = false,updatable = false)
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id",insertable = false,updatable = false)
     private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "transaction_id", referencedColumnName = "transaction_id",insertable = false,updatable = false)
+    private Transaction transaction;
 
     private String status;
 

@@ -1,4 +1,4 @@
-package lk.ijse.bookworm_lms.controller;
+package lk.ijse.bookworm_lms.controller.admin;
 
 import javafx.application.Platform;
 import javafx.fxml.*;
@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
+import lk.ijse.bookworm_lms.controller.admin.AdminDashboardFormController;
 import lk.ijse.bookworm_lms.dto.BookDTO;
 
 import java.io.IOException;
@@ -244,7 +245,7 @@ public class BookManageFormController {
     @FXML
     private void btnBackOnAction() {
         try {
-            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/adminDashboardForm.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/admin/adminDashboardForm.fxml"));
             Scene scene = new Scene(anchorPane);
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(scene);

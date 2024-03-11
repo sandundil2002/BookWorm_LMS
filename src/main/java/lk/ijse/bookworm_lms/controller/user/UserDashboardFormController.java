@@ -1,4 +1,4 @@
-package lk.ijse.bookworm_lms.controller;
+package lk.ijse.bookworm_lms.controller.user;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
