@@ -54,7 +54,7 @@ public class BranchBOImpl implements BranchBO {
 
     @Override
     public ObservableList<BranchDTO> getAllBranches() throws Exception {
-        List<Branch> branchList = branchDAO.getAll();
+        List<Branch> branchList = branchDAO.loadAll();
         List<BranchDTO> branchDTOS = new ArrayList<>();
         for (Branch branch : branchList){
             branchDTOS.add(new BranchDTO(

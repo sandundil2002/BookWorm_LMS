@@ -37,7 +37,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public ObservableList<User> getAll() throws Exception {
+    public ObservableList<User> loadAll() throws Exception {
         return null;
     }
 

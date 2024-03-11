@@ -70,7 +70,7 @@ public class BranchDAOImpl implements BranchDAO {
     }
 
     @Override
-    public ObservableList<Branch> getAll() {
+    public ObservableList<Branch> loadAll() {
         ObservableList<Branch> allBranchList = FXCollections.observableArrayList();
         Session loadSession = SessionFactoryConfig.getInstance().getSession();
         CriteriaQuery<Branch> criteriaQuery = loadSession.getCriteriaBuilder().createQuery(Branch.class);

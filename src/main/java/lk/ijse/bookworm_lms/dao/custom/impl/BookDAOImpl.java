@@ -69,24 +69,36 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public ObservableList<Book> getAll() {
-        /*ObservableList<Book> allBookList = FXCollections.observableArrayList();
+    public ObservableList<Book> loadAll() {
+        ObservableList<Book> allBookList = FXCollections.observableArrayList();
         Session loadSession = SessionFactoryConfig.getInstance().getSession();
         CriteriaQuery<Book> criteriaQuery = loadSession.getCriteriaBuilder().createQuery(Book.class);
         criteriaQuery.from(Book.class);
-        List<Book> BookList = loadSession.createQuery(criteriaQuery).getResultList();
-        allBookList.setAll(BookList);
+        List<Book> customersList = loadSession.createQuery(criteriaQuery).getResultList();
+        allBookList.setAll(customersList);
         loadSession.close();
-        return allBookList;*/
-        return null;
+        return allBookList;
     }
 
     @Override
-    public ObservableList<Book> getAll(String branch) {
+    public ObservableList<Book> getAllBooks(String branch) {
         ObservableList<Book> allBookList = FXCollections.observableArrayList();
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
             Query<Book> query = session.createQuery("FROM Book WHERE branch = :branch", Book.class);
             query.setParameter("branch", branch);
+            allBookList.addAll(query.getResultList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allBookList;
+    }
+
+    @Override
+    public ObservableList<Book> searchBookName(String title) {
+        ObservableList<Book> allBookList = FXCollections.observableArrayList();
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            Query<Book> query = session.createQuery("FROM Book WHERE title = :title", Book.class);
+            query.setParameter("title", title);
             allBookList.addAll(query.getResultList());
         } catch (Exception e) {
             e.printStackTrace();

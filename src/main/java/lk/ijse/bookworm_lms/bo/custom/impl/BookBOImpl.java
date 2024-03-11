@@ -2,6 +2,7 @@ package lk.ijse.bookworm_lms.bo.custom.impl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.BookDAO;
@@ -58,9 +59,45 @@ public class BookBOImpl implements BookBO {
 
     @Override
     public ObservableList<BookDTO> getAllBooks(String branch) throws Exception {
-        List<Book> bookList = bookDAO.getAll();
+        List<Book> bookList = bookDAO.getAllBooks(branch);
         List<BookDTO> bookDTOS = new ArrayList<>();
         for (Book book : bookList){
+            bookDTOS.add(new BookDTO(
+                    book.getId(),
+                    book.getBranch(),
+                    book.getTitle(),
+                    book.getAuthor(),
+                    book.getGenre(),
+                    book.getStatus(),
+                    book.getDateTime()
+            ));
+        }
+        return FXCollections.observableArrayList(bookDTOS);
+    }
+
+    @Override
+    public ObservableList<BookDTO> loadAllBooks() throws Exception {
+        List<Book> bookList = bookDAO.loadAll();
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        for (Book book : bookList){
+            bookDTOS.add(new BookDTO(
+                    book.getId(),
+                    book.getBranch(),
+                    book.getTitle(),
+                    book.getAuthor(),
+                    book.getGenre(),
+                    book.getStatus(),
+                    book.getDateTime()
+            ));
+        }
+        return FXCollections.observableArrayList(bookDTOS);
+    }
+
+    @Override
+    public ObservableList<BookDTO> SearchBookName(String name){
+        List<Book> bookList = bookDAO.searchBookName(name);
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        for (Book book : bookList) {
             bookDTOS.add(new BookDTO(
                     book.getId(),
                     book.getBranch(),

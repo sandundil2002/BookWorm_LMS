@@ -38,7 +38,7 @@ public class AdminDAOImpl implements AdminDAO {
     }
 
     @Override
-    public ObservableList<Admin> getAll() throws Exception {
+    public ObservableList<Admin> loadAll() throws Exception {
         return null;
     }
 

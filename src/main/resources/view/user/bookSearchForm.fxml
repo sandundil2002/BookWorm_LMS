@@ -3,13 +3,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="647.0" prefWidth="962.0" stylesheets="@../../style/admin-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.user.BookSearchFormController">
    <children>
-      <TextField layoutX="14.0" layoutY="14.0" onAction="#btnSearchOnAction" prefHeight="43.0" prefWidth="290.0" promptText="Search Book Name" styleClass="SearchFiled" stylesheets="@../../style/admin-dashboard-form.css" />
-      <TableView fx:id="tblBooks" layoutX="12.0" layoutY="93.0" prefHeight="543.0" prefWidth="934.0" styleClass="table" stylesheets="@../../style/admin-dashboard-form.css">
+      <TextField fx:id="txtSearch" layoutX="14.0" layoutY="11.0" onAction="#btnSearchOnAction" prefHeight="43.0" prefWidth="290.0" promptText="Search Book Name" styleClass="SearchFiled" stylesheets="@../../style/admin-dashboard-form.css" />
+      <TableView fx:id="tblBooks" layoutX="12.0" layoutY="66.0" prefHeight="570.0" prefWidth="934.0" styleClass="table" stylesheets="@../../style/admin-dashboard-form.css">
         <columns>
           <TableColumn fx:id="colId" prefWidth="83.19997882843018" text="Book Id" />
           <TableColumn fx:id="colBranch" prefWidth="118.39999389648438" text="Branch" />
@@ -20,5 +21,10 @@
             <TableColumn fx:id="colDateTime" prefWidth="193.5999755859375" text="Added Data &amp; Time" />
         </columns>
       </TableView>
+      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="264.0" layoutY="18.0" onMouseClicked="#btnSearchOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/search.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

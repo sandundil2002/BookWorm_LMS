@@ -14,5 +14,5 @@ public interface CrudDAO<T> extends SuperDAO{
 
     T search(String id) throws Exception;
 
-    ObservableList<T> getAll() throws Exception;
+    ObservableList<T> loadAll() throws Exception;
 }
