@@ -18,6 +18,7 @@ public class SessionFactoryConfig {
                 addAnnotatedClass(Admin.class).
                 addAnnotatedClass(Branch.class).
                 addAnnotatedClass(Book.class).
+                addAnnotatedClass(BookTransactionDetails.class).
                 getMetadataBuilder().build();
         sessionFactory = metadata.buildSessionFactory();
     }

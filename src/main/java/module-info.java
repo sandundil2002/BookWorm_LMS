@@ -14,4 +14,5 @@ module lk.ijse.bookworm_lms {
     opens lk.ijse.bookworm_lms.entity;
     opens lk.ijse.bookworm_lms.dto;
     opens lk.ijse.bookworm_lms.dao;
+    opens lk.ijse.bookworm_lms.embeddad;
 }

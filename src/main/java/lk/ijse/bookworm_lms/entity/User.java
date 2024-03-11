@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,25 +15,27 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
     private String password;
 
-    @Column(name = "dateTime")
     @CreationTimestamp
     private Timestamp dateTime;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionDetails> userBooks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "transaction")
+    private List<Transaction> transactionList = new ArrayList<>();
 
     public User(String name, String email, String password) {
         this.name = name;

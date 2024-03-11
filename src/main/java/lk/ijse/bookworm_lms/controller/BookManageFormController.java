@@ -74,8 +74,6 @@ public class BookManageFormController {
 
     private final String branchName = AdminDashboardFormController.branchName;
 
-    private final int branchId = AdminDashboardFormController.branchId;
-
     public void initialize(){
         //updateRealTime(lblTime);
         lblTitle.setText("Welcome To "+branchName+" Branch");
@@ -204,7 +202,7 @@ public class BookManageFormController {
 
     private void loadAllBooks(){
         try {
-            tblBook.setItems(bookBO.getAllBooks(branchId));
+            tblBook.setItems(bookBO.getAllBooks(txtBranch.getText()));
         } catch (Exception e) {
             e.printStackTrace();
         }

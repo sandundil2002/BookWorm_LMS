@@ -44,7 +44,6 @@ public class BranchBOImpl implements BranchBO {
         Branch branch = branchDAO.search(id);
         if (branch != null){
             return new BranchDTO(
-                    branch.getId(),
                     branch.getName(),
                     branch.getManager(),
                     branch.getAddress(),
@@ -59,7 +58,6 @@ public class BranchBOImpl implements BranchBO {
         List<BranchDTO> branchDTOS = new ArrayList<>();
         for (Branch branch : branchList){
             branchDTOS.add(new BranchDTO(
-                    branch.getId(),
                     branch.getName(),
                     branch.getManager(),
                     branch.getAddress(),

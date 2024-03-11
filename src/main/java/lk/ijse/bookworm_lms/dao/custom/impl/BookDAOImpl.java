@@ -5,7 +5,6 @@ import javafx.collections.*;
 import lk.ijse.bookworm_lms.config.SessionFactoryConfig;
 import lk.ijse.bookworm_lms.dao.custom.BookDAO;
 import lk.ijse.bookworm_lms.entity.Book;
-import lk.ijse.bookworm_lms.entity.Branch;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 
@@ -71,31 +70,27 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public ObservableList<Book> getAll() {
-        ObservableList<Book> allBookList = FXCollections.observableArrayList();
+        /*ObservableList<Book> allBookList = FXCollections.observableArrayList();
         Session loadSession = SessionFactoryConfig.getInstance().getSession();
         CriteriaQuery<Book> criteriaQuery = loadSession.getCriteriaBuilder().createQuery(Book.class);
         criteriaQuery.from(Book.class);
         List<Book> BookList = loadSession.createQuery(criteriaQuery).getResultList();
         allBookList.setAll(BookList);
         loadSession.close();
-        return allBookList;
+        return allBookList;*/
+        return null;
     }
 
     @Override
-    public ObservableList<Book> getAll(int branch) {
-      /*  ObservableList<Book> allBookList = FXCollections.observableArrayList();
-        Session session = SessionFactoryConfig.getInstance().getSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
-        Root<Book> root = criteriaQuery.from(Book.class);
-        Predicate predicate = criteriaBuilder.equal(root.get("branchID"), branch);
-        criteriaQuery.where(predicate);
-
-        Query<Book> query = session.createQuery(criteriaQuery);
-        allBookList.addAll(query.getResultList());
-
-        session.close();
-        return allBookList;*/
-        return null;
+    public ObservableList<Book> getAll(String branch) {
+        ObservableList<Book> allBookList = FXCollections.observableArrayList();
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            Query<Book> query = session.createQuery("FROM Book WHERE branch = :branch", Book.class);
+            query.setParameter("branch", branch);
+            allBookList.addAll(query.getResultList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allBookList;
     }
 }

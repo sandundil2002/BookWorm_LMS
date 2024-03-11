@@ -6,5 +6,5 @@ import lk.ijse.bookworm_lms.entity.Book;
 
 public interface BookDAO extends CrudDAO<Book> {
 
-    ObservableList<Book> getAll(int branch);
+    ObservableList<Book> getAll(String branch);
 }

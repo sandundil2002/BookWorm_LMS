@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -13,33 +14,28 @@ import java.util.*;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private int id;
 
-    @Column(name = "branch")
     private String branch;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "author")
     private String author;
 
-    @Column(name = "genre")
     private String genre;
 
-    @Column(name = "status")
     private String status;
 
-    @Column(name = "dateTime")
     @CreationTimestamp
     private Timestamp dateTime;
 
-    @ManyToMany(mappedBy = "bookList")
-    private List<Branch> branchList = new ArrayList<>();
+    @OneToMany(mappedBy = "book")
+    private List<BookTransactionDetails> userBooks = new ArrayList<>();
 
     public Book(String branch, String author, String title, String genre, String status) {
         this.branch = branch;
