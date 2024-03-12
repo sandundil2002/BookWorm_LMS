@@ -18,6 +18,8 @@ public interface UserBO extends SuperBO {
 
     ObservableList<UserDTO> getAllUsers() throws Exception;
 
-    User searchUser(String name, String password);
+    User searchUser(String name, String password) throws Exception;
+
+    User searchUserId(String name) throws Exception;
 
 }

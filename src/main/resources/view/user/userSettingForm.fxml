@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="647.0" prefWidth="962.0" stylesheets="@../../style/user-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.user.UserSettingFormController">
+   <children>
+      <Label layoutX="247.0" styleClass="title" stylesheets="@../../style/user-dashboard-form.css" text="User Account Settings" underline="true" />
+      <ImageView fitHeight="217.0" fitWidth="274.0" layoutX="349.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/user-review.png" />
+         </image></ImageView>
+      <Label fx:id="lblUserId" layoutX="394.0" layoutY="272.0" text="User Id">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="83.0" layoutY="417.0" promptText="User Name" styleClass="UserFiled" stylesheets="@../../style/user-dashboard-form.css" />
+      <TextField fx:id="txtPassword" layoutX="351.0" layoutY="417.0" promptText="Password" styleClass="UserFiled" stylesheets="@../../style/user-dashboard-form.css" />
+      <TextField fx:id="txtEmail" layoutX="623.0" layoutY="417.0" promptText="E-mail" styleClass="UserFiled" stylesheets="@../../style/user-dashboard-form.css" />
+      <JFXButton layoutX="354.0" layoutY="514.0" onAction="#btnUpdateDetailsOnAction" prefHeight="67.0" prefWidth="228.0" styleClass="btn" stylesheets="@../../style/user-dashboard-form.css" text="Update Details" />
+      <Label fx:id="lblUserName" layoutX="393.0" layoutY="299.0" text="User Name">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

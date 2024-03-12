@@ -7,4 +7,6 @@ public interface UserDAO extends CrudDAO<User> {
 
     User searchUser(String name, String password);
 
+    User searchUserId(String name);
+
 }

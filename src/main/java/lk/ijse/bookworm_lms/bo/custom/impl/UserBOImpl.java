@@ -25,7 +25,11 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public boolean updateUser(String id , UserDTO dto) throws Exception {
-        return false;
+        return userDAO.update(id,new User(
+                dto.getName(),
+                dto.getEmail(),
+                dto.getPassword()
+        ));
     }
 
     @Override
@@ -50,6 +54,17 @@ public class UserBOImpl implements UserBO {
             return new User(
                     user.getName(),
                     user.getPassword()
+            );
+        }
+        return null;
+    }
+
+    @Override
+    public User searchUserId(String name)  {
+        User user = userDAO.searchUserId(name);
+        if (user != null){
+            return new User(
+                    user.getId()
             );
         }
         return null;
