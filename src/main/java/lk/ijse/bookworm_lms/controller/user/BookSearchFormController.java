@@ -7,6 +7,8 @@ import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
 import lk.ijse.bookworm_lms.dto.BookDTO;
 
+import java.util.Optional;
+
 public class BookSearchFormController {
 
     @FXML
@@ -41,6 +43,7 @@ public class BookSearchFormController {
     public void initialize(){
         loadAllBooks();
         setCellValueFactory();
+        borrowBook();
     }
 
     @FXML
@@ -66,6 +69,25 @@ public class BookSearchFormController {
         colGenre.setCellValueFactory(new PropertyValueFactory<>("genre"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         colDateTime.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
+    }
+
+    private void borrowBook(){
+        try {
+            tblBooks.setOnMouseClicked(event -> {
+                BookDTO selectedItem = tblBooks.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to borrow this Book?", ok, no).showAndWait();
+                    if (result.orElse(no) == ok) {
+                        
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadAllBooks(){
