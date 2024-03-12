@@ -16,6 +16,8 @@ public interface TransactionBO extends SuperBO {
 
     ObservableList<TransactionDTO> getAllTransaction() throws Exception;
 
-    ObservableList<TransactionDTO> getUserTransaction(String user) throws Exception;
+    ObservableList<TransactionDTO> getUserTransaction(String user, String status) throws Exception;
+
+    boolean updateStatus(int id,String status) throws Exception ;
 
 }

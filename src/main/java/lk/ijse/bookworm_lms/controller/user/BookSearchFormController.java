@@ -114,6 +114,7 @@ public class BookSearchFormController {
             transactionDTO.setUserName(UserLoginFormController.member);
             transactionDTO.setBookTitle(title);
             transactionDTO.setBranch(branch);
+            transactionDTO.setStatus("Borrow");
             transactionDTO.setBorrowing(Date.valueOf(currentDate));
             transactionDTO.setReturning(Date.valueOf(returnDate));
 

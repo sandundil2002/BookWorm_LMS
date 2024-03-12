@@ -7,6 +7,8 @@ import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
 import lk.ijse.bookworm_lms.dto.TransactionDTO;
 
+import java.util.Optional;
+
 public class BorrowBookFormController {
 
     @FXML
@@ -33,8 +35,8 @@ public class BorrowBookFormController {
     private final TransactionBO transactionBO = (TransactionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.TRANSACTION);
 
     public void initialize(){
-        loadAllTransactions();
-        setCellValueFactory();
+        returnBook();
+        reload();
     }
 
     private void setCellValueFactory() {
@@ -46,9 +48,44 @@ public class BorrowBookFormController {
         colReturn.setCellValueFactory(new PropertyValueFactory<>("returning"));
     }
 
+    private void returnBook(){
+        try {
+            tblBooks.setOnMouseClicked(event -> {
+                TransactionDTO selectedItem = tblBooks.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    ButtonType ok = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                    ButtonType no = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+                    Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to return this Book?", ok, no).showAndWait();
+                    if (result.orElse(no) == ok) {
+                        updateStatus(selectedItem.getId());
+                        reload();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateStatus(int id){
+        try {
+            String status = "Return";
+            transactionBO.updateStatus(id,status);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void reload() {
+        loadAllTransactions();
+        setCellValueFactory();
+    }
+
     private void loadAllTransactions(){
         try {
-            tblBooks.setItems(transactionBO.getUserTransaction(UserLoginFormController.member));
+            String status = "Borrow";
+            tblBooks.setItems(transactionBO.getUserTransaction(UserLoginFormController.member,status));
         } catch (Exception e) {
             e.printStackTrace();
         }

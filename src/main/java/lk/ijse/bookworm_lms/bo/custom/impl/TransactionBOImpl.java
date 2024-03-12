@@ -5,10 +5,8 @@ import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
 import lk.ijse.bookworm_lms.dao.DAOFactory;
 import lk.ijse.bookworm_lms.dao.custom.TransactionDAO;
-import lk.ijse.bookworm_lms.dto.BookDTO;
 import lk.ijse.bookworm_lms.dto.TransactionDTO;
-import lk.ijse.bookworm_lms.entity.Book;
-import lk.ijse.bookworm_lms.entity.Transaction;
+import lk.ijse.bookworm_lms.entity.Transactions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,7 @@ public class TransactionBOImpl implements TransactionBO {
 
     @Override
     public boolean saveTransaction(TransactionDTO dto) throws Exception {
-        return transactionDAO.save(new Transaction(
+        return transactionDAO.save(new Transactions(
                 dto.getUserName(),
                 dto.getBookTitle(),
                 dto.getBranch(),
@@ -49,19 +47,25 @@ public class TransactionBOImpl implements TransactionBO {
     }
 
     @Override
-    public ObservableList<TransactionDTO> getUserTransaction(String user) {
-        List<Transaction> transactionList = transactionDAO.getUserTransaction(user);
+    public ObservableList<TransactionDTO> getUserTransaction(String user, String status) {
+        List<Transactions> transactionList = transactionDAO.getUserTransaction(user,status);
         List<TransactionDTO> transactionDTOS = new ArrayList<>();
-        for (Transaction transaction : transactionList) {
+        for (Transactions transaction : transactionList) {
             transactionDTOS.add(new TransactionDTO(
                     transaction.getId(),
                     transaction.getBranch(),
                     transaction.getBookTitle(),
                     transaction.getUserName(),
                     transaction.getBorrowing(),
-                    transaction.getReturning()
+                    transaction.getReturning(),
+                    transaction.getStatus()
             ));
         }
         return FXCollections.observableArrayList(transactionDTOS);
+    }
+
+    @Override
+    public boolean updateStatus(int id, String status) throws Exception {
+        return transactionDAO.updateStatus(id,status);
     }
 }

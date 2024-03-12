@@ -4,15 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.config.SessionFactoryConfig;
 import lk.ijse.bookworm_lms.dao.custom.TransactionDAO;
-import lk.ijse.bookworm_lms.entity.Book;
-import lk.ijse.bookworm_lms.entity.Transaction;
+import lk.ijse.bookworm_lms.entity.Transactions;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 public class TransactionDAOImpl implements TransactionDAO{
 
     @Override
-    public boolean save(Transaction addTransaction) throws Exception {
+    public boolean save(Transactions addTransaction) throws Exception {
         Session saveSession = SessionFactoryConfig.getInstance().getSession();
         org.hibernate.Transaction saveBranch = saveSession.beginTransaction();
         saveSession.persist(addTransaction);
@@ -27,30 +27,49 @@ public class TransactionDAOImpl implements TransactionDAO{
     }
 
     @Override
-    public boolean update(String id, Transaction dto) throws Exception {
+    public boolean update(String id, Transactions dto) throws Exception {
         return false;
     }
 
     @Override
-    public Transaction search(String id) throws Exception {
+    public Transactions search(String id) throws Exception {
         return null;
     }
 
     @Override
-    public ObservableList<Transaction> loadAll() throws Exception {
+    public ObservableList<Transactions> loadAll() throws Exception {
         return null;
     }
 
     @Override
-    public ObservableList<Transaction> getUserTransaction(String user) {
-        ObservableList<Transaction> transactions = FXCollections.observableArrayList();
+    public ObservableList<Transactions> getUserTransaction(String user, String status) {
+        ObservableList<Transactions> transactions = FXCollections.observableArrayList();
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            Query<Transaction> query = session.createQuery("FROM Transaction WHERE userName = :userName", Transaction.class);
+            Query<Transactions> query = session.createQuery("FROM Transactions WHERE userName = :userName AND status = :status", Transactions.class);
             query.setParameter("userName", user);
+            query.setParameter("status",status);
             transactions.addAll(query.getResultList());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return transactions;
+    }
+
+    @Override
+    public boolean updateStatus(int id, String status) {
+        Session updateSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction updateTransaction = updateSession.beginTransaction();
+        Transactions existingTransaction = updateSession.get(Transactions.class, id);
+        if (existingTransaction!= null) {
+            existingTransaction.setStatus(status);
+            updateSession.merge(existingTransaction);
+        } else {
+            updateTransaction.commit();
+            updateSession.close();
+            return false;
+        }
+        updateTransaction.commit();
+        updateSession.close();
+        return true;
     }
 }

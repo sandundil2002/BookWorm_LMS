@@ -16,5 +16,6 @@ public class TransactionDTO {
     private String userName;
     private Date borrowing;
     private Date returning;
+    private String status;
 
 }

@@ -2,10 +2,11 @@ package lk.ijse.bookworm_lms.dao.custom;
 
 import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.dao.CrudDAO;
-import lk.ijse.bookworm_lms.dto.TransactionDTO;
-import lk.ijse.bookworm_lms.entity.Transaction;
+import lk.ijse.bookworm_lms.entity.Transactions;
 
-public interface TransactionDAO extends CrudDAO<Transaction> {
+public interface TransactionDAO extends CrudDAO<Transactions> {
 
-    ObservableList<Transaction> getUserTransaction(String user);
+    ObservableList<Transactions> getUserTransaction(String user, String status);
+
+    boolean updateStatus(int id,String status);
 }

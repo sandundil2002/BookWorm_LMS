@@ -12,7 +12,7 @@ import java.sql.*;
 
 @Entity
 @Table(name = "transaction")
-public class Transaction implements Serializable {
+public class Transactions implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,13 @@ public class Transaction implements Serializable {
 
     private Date returning;
 
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Transaction(String userName, String bookTitle, String branch, Date borrowing, Date returning) {
+    public Transactions(String userName, String bookTitle, String branch, Date borrowing, Date returning) {
         this.userName = userName;
         this.bookTitle = bookTitle;
         this.branch = branch;
