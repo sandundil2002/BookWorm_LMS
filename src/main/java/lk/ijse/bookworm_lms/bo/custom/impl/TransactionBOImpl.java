@@ -2,12 +2,24 @@ package lk.ijse.bookworm_lms.bo.custom.impl;
 
 import javafx.collections.ObservableList;
 import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
+import lk.ijse.bookworm_lms.dao.DAOFactory;
+import lk.ijse.bookworm_lms.dao.custom.TransactionDAO;
 import lk.ijse.bookworm_lms.dto.TransactionDTO;
+import lk.ijse.bookworm_lms.entity.Transaction;
 
 public class TransactionBOImpl implements TransactionBO {
+
+    private final TransactionDAO transactionDAO = (TransactionDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.TRANSACTION);
+
     @Override
     public boolean saveTransaction(TransactionDTO dto) throws Exception {
-        return false;
+        return transactionDAO.save(new Transaction(
+                dto.getUserName(),
+                dto.getBookTitle(),
+                dto.getBranch(),
+                dto.getBorrowing(),
+                dto.getReturning()
+        ));
     }
 
     @Override

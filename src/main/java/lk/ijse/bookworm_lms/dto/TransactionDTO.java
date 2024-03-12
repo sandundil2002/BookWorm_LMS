@@ -2,7 +2,7 @@ package lk.ijse.bookworm_lms.dto;
 
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.sql.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class TransactionDTO {
 
     private int id;
-    private int userId;
+    private String userName;
     private String bookTitle;
     private String branch;
     private Timestamp borrowing;

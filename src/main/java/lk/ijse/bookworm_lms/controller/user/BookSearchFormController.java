@@ -7,6 +7,7 @@ import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
 import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
 import lk.ijse.bookworm_lms.dto.BookDTO;
+import lk.ijse.bookworm_lms.dto.TransactionDTO;
 
 import java.util.Optional;
 
@@ -85,6 +86,7 @@ public class BookSearchFormController {
                     Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to borrow this Book?", ok, no).showAndWait();
                     if (result.orElse(no) == ok) {
                         getBook(selectedItem.getTitle(), selectedItem.getBranch());
+                        updateStatus(selectedItem.getId());
                     }
                 }
             });
@@ -102,6 +104,24 @@ public class BookSearchFormController {
     }
 
     private void getBook(String title , String branch){
+        try {
+            TransactionDTO transactionDTO = new TransactionDTO();
+            transactionDTO.setUserName(UserLoginFormController.member);
+            transactionDTO.setBookTitle(title);
+            transactionDTO.setBranch(branch);
 
+            transactionBO.saveTransaction(transactionDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateStatus(int id){
+        try {
+            String status = "Not Available";
+            bookBO.updateStatus(id,status);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

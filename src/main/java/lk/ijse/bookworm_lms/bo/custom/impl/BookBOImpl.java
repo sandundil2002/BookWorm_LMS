@@ -110,4 +110,9 @@ public class BookBOImpl implements BookBO {
         }
         return FXCollections.observableArrayList(bookDTOS);
     }
+
+    @Override
+    public boolean updateStatus(int id,String status) throws Exception {
+        return bookDAO.updateStatus(id,status);
+    }
 }

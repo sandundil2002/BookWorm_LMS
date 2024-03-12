@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +19,8 @@ public class Transaction implements Serializable {
     @Column(name = "transaction_id")
     private int id;
 
+    private String userName;
+
     @Column(name = "book_title")
     private String bookTitle;
 
@@ -32,4 +34,11 @@ public class Transaction implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Transaction(String userName, String bookTitle, String branch, Timestamp borrowing, Timestamp returning) {
+        this.userName = userName;
+        this.bookTitle = bookTitle;
+        this.branch = branch;
+        this.borrowing = borrowing;
+        this.returning = returning;
+    }
 }

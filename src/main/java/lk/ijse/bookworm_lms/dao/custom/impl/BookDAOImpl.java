@@ -105,4 +105,22 @@ public class BookDAOImpl implements BookDAO {
         }
         return allBookList;
     }
+
+    @Override
+    public boolean updateStatus(int id,String status) {
+        Session updateSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction updateTransaction = updateSession.beginTransaction();
+        Book existingBook = updateSession.get(Book.class, id);
+        if (existingBook!= null) {
+            existingBook.setStatus(status);
+            updateSession.merge(existingBook);
+        } else {
+            updateTransaction.commit();
+            updateSession.close();
+            return false;
+        }
+        updateTransaction.commit();
+        updateSession.close();
+        return true;
+    }
 }

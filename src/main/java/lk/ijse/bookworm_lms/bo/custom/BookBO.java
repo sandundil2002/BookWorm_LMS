@@ -20,4 +20,6 @@ public interface BookBO  extends SuperBO {
 
     ObservableList<BookDTO> SearchBookName(String name) throws Exception;
 
+    boolean updateStatus(int id,String status) throws Exception;
+
 }

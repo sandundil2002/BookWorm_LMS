@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1200.0" stylesheets="@../../style/user-dashboard-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.user.UserDashboardFormController">
    <children>
-      <Label layoutX="510.0" layoutY="-2.0" styleClass="title" text="User Dashboard" underline="true" />
+      <Label fx:id="lblTitle" layoutX="510.0" layoutY="-2.0" styleClass="title" text="User Dashboard" underline="true" />
       <Line endX="10.600021362304688" endY="610.3999633789062" layoutX="227.0" layoutY="118.0" startX="10.600021362304688" startY="-118.0" styleClass="line" />
       <Label layoutX="109.0" layoutY="58.0" text="Book Worm">
          <font>

@@ -25,6 +25,8 @@ public class UserLoginFormController {
     @FXML
     private TextField txtUsername;
 
+    public static String member;
+
     private final UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
 
     @FXML
@@ -64,6 +66,7 @@ public class UserLoginFormController {
             if (user == null){
                 new Alert(Alert.AlertType.WARNING,"Incorrect username or password").show();
             } else {
+                member = username;
                 loadDashboard();
             }
         } catch (Exception e) {

@@ -2,6 +2,7 @@ package lk.ijse.bookworm_lms.controller.user;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -9,9 +10,14 @@ import java.io.IOException;
 public class UserDashboardFormController {
 
     @FXML
+    private Label lblTitle;
+
+    @FXML
     private AnchorPane pane;
 
     public void initialize(){
+        String user = UserLoginFormController.member;
+        lblTitle.setText("Welcome Back "+ user);
         btnSearchBooksOnAction();
     }
 
