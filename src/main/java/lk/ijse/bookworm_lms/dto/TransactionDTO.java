@@ -11,10 +11,10 @@ import java.sql.*;
 public class TransactionDTO {
 
     private int id;
-    private String userName;
-    private String bookTitle;
     private String branch;
-    private Timestamp borrowing;
-    private Timestamp returning;
+    private String bookTitle;
+    private String userName;
+    private Date borrowing;
+    private Date returning;
 
 }

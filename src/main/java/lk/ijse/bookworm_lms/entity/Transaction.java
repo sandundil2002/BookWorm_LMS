@@ -26,15 +26,15 @@ public class Transaction implements Serializable {
 
     private String branch;
 
-    private Timestamp borrowing;
+    private Date borrowing;
 
-    private Timestamp returning;
+    private Date returning;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Transaction(String userName, String bookTitle, String branch, Timestamp borrowing, Timestamp returning) {
+    public Transaction(String userName, String bookTitle, String branch, Date borrowing, Date returning) {
         this.userName = userName;
         this.bookTitle = bookTitle;
         this.branch = branch;

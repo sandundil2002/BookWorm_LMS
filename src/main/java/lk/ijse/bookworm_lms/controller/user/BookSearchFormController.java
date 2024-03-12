@@ -9,6 +9,8 @@ import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
 import lk.ijse.bookworm_lms.dto.BookDTO;
 import lk.ijse.bookworm_lms.dto.TransactionDTO;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
 public class BookSearchFormController {
@@ -45,8 +47,7 @@ public class BookSearchFormController {
     private final TransactionBO transactionBO = (TransactionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.TRANSACTION);
 
     public void initialize(){
-        loadAllBooks();
-        setCellValueFactory();
+        reload();
         borrowBook();
     }
 
@@ -87,6 +88,7 @@ public class BookSearchFormController {
                     if (result.orElse(no) == ok) {
                         getBook(selectedItem.getTitle(), selectedItem.getBranch());
                         updateStatus(selectedItem.getId());
+                        reload();
                     }
                 }
             });
@@ -105,10 +107,15 @@ public class BookSearchFormController {
 
     private void getBook(String title , String branch){
         try {
+            LocalDate currentDate = LocalDate.now();
+            LocalDate returnDate = currentDate.plusDays(30);
+
             TransactionDTO transactionDTO = new TransactionDTO();
             transactionDTO.setUserName(UserLoginFormController.member);
             transactionDTO.setBookTitle(title);
             transactionDTO.setBranch(branch);
+            transactionDTO.setBorrowing(Date.valueOf(currentDate));
+            transactionDTO.setReturning(Date.valueOf(returnDate));
 
             transactionBO.saveTransaction(transactionDTO);
         } catch (Exception e) {
@@ -123,5 +130,10 @@ public class BookSearchFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void reload(){
+        loadAllBooks();
+        setCellValueFactory();
     }
 }

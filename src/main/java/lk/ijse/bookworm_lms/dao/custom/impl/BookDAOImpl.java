@@ -11,6 +11,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class BookDAOImpl implements BookDAO {
+
     @Override
     public boolean save(Book addBook) {
         Session saveSession = SessionFactoryConfig.getInstance().getSession();
