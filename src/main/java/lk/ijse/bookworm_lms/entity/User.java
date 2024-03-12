@@ -34,9 +34,6 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Transaction> transactions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    private List<BookTransactionDetails> bookTransactionDetails = new ArrayList<>();
-
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;

@@ -1,7 +1,7 @@
 package lk.ijse.bookworm_lms.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.bookworm_lms.embeddad.UserBooksPK;
+import lk.ijse.bookworm_lms.embeddad.TransactionBooksPK;
 import lombok.*;
 
 @NoArgsConstructor
@@ -13,11 +13,7 @@ import lombok.*;
 public class BookTransactionDetails {
 
     @EmbeddedId
-    private UserBooksPK userBooksPK;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user;
+    private TransactionBooksPK transactionBooksPK;
 
     @ManyToOne
     @JoinColumn(name = "book_id", referencedColumnName = "book_id",insertable = false,updatable = false)

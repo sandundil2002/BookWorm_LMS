@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
+import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
 import lk.ijse.bookworm_lms.dto.BookDTO;
 
 import java.util.Optional;
@@ -39,6 +40,8 @@ public class BookSearchFormController {
     private TableView<BookDTO> tblBooks;
 
     private final BookBO bookBO = (BookBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BOOK);
+
+    private final TransactionBO transactionBO = (TransactionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.TRANSACTION);
 
     public void initialize(){
         loadAllBooks();
@@ -81,7 +84,7 @@ public class BookSearchFormController {
 
                     Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to borrow this Book?", ok, no).showAndWait();
                     if (result.orElse(no) == ok) {
-                        
+                        getBook(selectedItem.getTitle(), selectedItem.getBranch());
                     }
                 }
             });
@@ -96,5 +99,9 @@ public class BookSearchFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void getBook(String title , String branch){
+
     }
 }

@@ -19,6 +19,11 @@ public class Transaction implements Serializable {
     @Column(name = "transaction_id")
     private int id;
 
+    @Column(name = "book_title")
+    private String bookTitle;
+
+    private String branch;
+
     private Timestamp borrowing;
 
     private Timestamp returning;

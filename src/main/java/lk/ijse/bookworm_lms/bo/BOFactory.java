@@ -1,9 +1,6 @@
 package lk.ijse.bookworm_lms.bo;
 
-import lk.ijse.bookworm_lms.bo.custom.impl.AdminBOImpl;
-import lk.ijse.bookworm_lms.bo.custom.impl.BookBOImpl;
-import lk.ijse.bookworm_lms.bo.custom.impl.BranchBOImpl;
-import lk.ijse.bookworm_lms.bo.custom.impl.UserBOImpl;
+import lk.ijse.bookworm_lms.bo.custom.impl.*;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -16,7 +13,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        USER,ADMIN,BRANCH,BOOK
+        USER,ADMIN,BRANCH,BOOK,TRANSACTION
     }
 
     public SuperBO getBO(BOTypes boTypes) {
@@ -29,6 +26,8 @@ public class BOFactory {
                 return new BranchBOImpl();
             case BOOK:
                 return new BookBOImpl();
+            case TRANSACTION:
+                return new TransactionBOImpl();
             default:
                 return null;
         }

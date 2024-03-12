@@ -1,10 +1,9 @@
 package lk.ijse.bookworm_lms.util;
 
-import jakarta.transaction.Synchronization;
 import org.hibernate.*;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 
-public class TransactionUtil implements Transaction {
+public abstract class TransactionUtil implements Transaction {
 
     private final Session session;
     private Transaction transaction;
@@ -16,11 +15,6 @@ public class TransactionUtil implements Transaction {
     @Override
     public TransactionStatus getStatus() {
         return null;
-    }
-
-    @Override
-    public void registerSynchronization(Synchronization synchronization) {
-
     }
 
     @Override

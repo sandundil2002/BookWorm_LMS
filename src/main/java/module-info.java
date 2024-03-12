@@ -6,7 +6,6 @@ module lk.ijse.bookworm_lms {
     requires static lombok;
     requires java.naming;
     requires com.jfoenix;
-    requires jakarta.transaction;
 
     opens lk.ijse.bookworm_lms to javafx.fxml;
     exports lk.ijse.bookworm_lms;
