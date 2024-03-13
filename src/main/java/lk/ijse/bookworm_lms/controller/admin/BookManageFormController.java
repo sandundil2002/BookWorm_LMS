@@ -142,6 +142,7 @@ public class BookManageFormController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Book Added Successfully").show();
                     btnClearOnAction();
+                    reload();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Book Added Failed").show();
                 }
@@ -190,6 +191,7 @@ public class BookManageFormController {
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Book Update Successfully").show();
                     btnClearOnAction();
+                    reload();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Book Update Failed").show();
                 }

@@ -85,8 +85,8 @@ public class BookDAOImpl implements BookDAO {
     public ObservableList<Book> getAllBooks(String branch) {
         ObservableList<Book> allBookList = FXCollections.observableArrayList();
         try (Session session = SessionFactoryConfig.getInstance().getSession()) {
-            Query<Book> query = session.createQuery("FROM Book WHERE branch = :branch", Book.class);
-            query.setParameter("branch", branch);
+            Query<Book> query = session.createQuery("FROM Book WHERE branchName = :branchName", Book.class);
+            query.setParameter("branchName", branch);
             allBookList.addAll(query.getResultList());
         } catch (Exception e) {
             e.printStackTrace();

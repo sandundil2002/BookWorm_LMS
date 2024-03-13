@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../style/view-transaction-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.admin.ViewTransactionFormController">
    <children>
-      <Label fx:id="lblTitle" layoutX="325.0" layoutY="2.0" styleClass="title" stylesheets="@../../style/view-transaction-form.css" text="Branch Transaction" underline="true" />
+      <Label fx:id="lblTitle" layoutX="190.0" layoutY="2.0" styleClass="title" stylesheets="@../../style/view-transaction-form.css" text="Branch Transaction" underline="true" />
       <TableView fx:id="tblTransaction" layoutX="19.0" layoutY="60.0" prefHeight="419.0" prefWidth="762.0" styleClass="table">
         <columns>
           <TableColumn fx:id="colId" prefWidth="74.4000244140625" text="T_ID" />

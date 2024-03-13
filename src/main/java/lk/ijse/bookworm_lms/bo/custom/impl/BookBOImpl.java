@@ -57,7 +57,7 @@ public class BookBOImpl implements BookBO {
     }
 
     @Override
-    public ObservableList<BookDTO> getAllBooks(String branch) throws Exception {
+    public ObservableList<BookDTO> getAllBooks(String branch) {
         List<Book> bookList = bookDAO.getAllBooks(branch);
         List<BookDTO> bookDTOS = new ArrayList<>();
         for (Book book : bookList){

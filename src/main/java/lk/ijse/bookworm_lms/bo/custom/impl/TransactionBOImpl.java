@@ -21,6 +21,7 @@ public class TransactionBOImpl implements TransactionBO {
                 dto.getUserName(),
                 dto.getBookTitle(),
                 dto.getBranch(),
+                dto.getStatus(),
                 dto.getBorrowing(),
                 dto.getReturning()
         ));
@@ -42,7 +43,7 @@ public class TransactionBOImpl implements TransactionBO {
     }
 
     @Override
-    public ObservableList<TransactionDTO> getAllTransaction() throws Exception {
+    public ObservableList<TransactionDTO> getAllTransaction(){
         return null;
     }
 

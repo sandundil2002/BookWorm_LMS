@@ -37,10 +37,11 @@ public class Transactions implements Serializable {
     @ManyToMany(mappedBy = "transactionList")
     private List<Book> bookList = new ArrayList<>();
 
-    public Transactions(String userName, String bookTitle, String branch, Date borrowing, Date returning) {
+    public Transactions(String userName, String bookTitle, String branch,String status, Date borrowing, Date returning) {
         this.userName = userName;
         this.bookTitle = bookTitle;
         this.branch = branch;
+        this.status = status;
         this.borrowing = borrowing;
         this.returning = returning;
     }
