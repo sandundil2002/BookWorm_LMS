@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../style/view-transaction-form.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.bookworm_lms.controller.admin.ViewTransactionFormController">
+   <children>
+      <Label fx:id="lblTitle" layoutX="325.0" layoutY="2.0" styleClass="title" stylesheets="@../../style/view-transaction-form.css" text="Branch Transaction" underline="true" />
+      <TableView fx:id="tblTransaction" layoutX="19.0" layoutY="60.0" prefHeight="419.0" prefWidth="762.0" styleClass="table">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="74.4000244140625" text="T_ID" />
+          <TableColumn fx:id="colBook" prefWidth="97.59994506835938" text="Book" />
+            <TableColumn fx:id="colUser" prefWidth="108.79998779296875" text="User" />
+            <TableColumn fx:id="colBorrow" prefWidth="180.0" text="Borrow Date" />
+            <TableColumn fx:id="colReturn" prefWidth="168.79998779296875" text="Return Date" />
+            <TableColumn fx:id="colStatus" prefWidth="138.4000244140625" text="Status" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="620.0" layoutY="6.0" onAction="#btnNotReturnOnAction" prefHeight="47.0" prefWidth="160.0" styleClass="btn" text="Not Yet Return" />
+      <ImageView fitHeight="47.0" fitWidth="59.0" layoutX="21.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/logo.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="11.0" layoutY="34.0" text="Book Worm">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

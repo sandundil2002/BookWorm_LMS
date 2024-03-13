@@ -59,6 +59,19 @@ public class TransactionDAOImpl implements TransactionDAO{
     }
 
     @Override
+    public ObservableList<Transactions> getBranchTransaction(String branch) {
+        ObservableList<Transactions> transactions = FXCollections.observableArrayList();
+        try (Session session = SessionFactoryConfig.getInstance().getSession()) {
+            Query<Transactions> query = session.createQuery("FROM Transactions WHERE branch = :branch", Transactions.class);
+            query.setParameter("branch", branch);
+            transactions.addAll(query.getResultList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    @Override
     public boolean updateStatus(int id, String status) {
         Session updateSession = SessionFactoryConfig.getInstance().getSession();
         Transaction updateTransaction = updateSession.beginTransaction();

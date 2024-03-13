@@ -58,6 +58,7 @@ public class BranchBOImpl implements BranchBO {
         List<BranchDTO> branchDTOS = new ArrayList<>();
         for (Branch branch : branchList){
             branchDTOS.add(new BranchDTO(
+                    branch.getId(),
                     branch.getName(),
                     branch.getManager(),
                     branch.getAddress(),

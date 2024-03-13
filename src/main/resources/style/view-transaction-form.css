@@ -1,0 +1,40 @@
+.root{
+    -fx-background-color: #A1A1A1;
+}
+
+.title{
+    -fx-font-family: Ubuntu;
+    -fx-text-fill: #333;
+    -fx-font-size: 30px;
+    -fx-font-weight:bold;
+    -fx-border: 3px solid #ccc;
+    -fx-border-radius: 5px;
+    -fx-background-color: Transparent;
+    -fx-text-alignment: right;
+}
+
+.table{
+    -fx-background-color: Transparent;
+    -fx-border-color: black;
+    -fx-border-radius: 7px;
+    -fx-font-size: 15px;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+}
+
+.btn{
+    -fx-background-color: transparent;
+    -fx-border-color: #2d8c04;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 30;
+    -fx-font-size: 17;
+    -fx-text-fill: #c73838;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-width: 2px;
+}
+
+.btn:hover{
+    -fx-background-color: rgba(0, 255, 0, 0.5);
+}
+

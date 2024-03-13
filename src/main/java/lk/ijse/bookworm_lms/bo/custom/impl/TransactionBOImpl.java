@@ -68,4 +68,22 @@ public class TransactionBOImpl implements TransactionBO {
     public boolean updateStatus(int id, String status) throws Exception {
         return transactionDAO.updateStatus(id,status);
     }
+
+    @Override
+    public ObservableList<TransactionDTO> getBranchTransaction(String branch) {
+        List<Transactions> transactionList = transactionDAO.getBranchTransaction(branch);
+        List<TransactionDTO> transactionDTOS = new ArrayList<>();
+        for (Transactions transaction : transactionList) {
+            transactionDTOS.add(new TransactionDTO(
+                    transaction.getId(),
+                    transaction.getBranch(),
+                    transaction.getBookTitle(),
+                    transaction.getUserName(),
+                    transaction.getBorrowing(),
+                    transaction.getReturning(),
+                    transaction.getStatus()
+            ));
+        }
+        return FXCollections.observableArrayList(transactionDTOS);
+    }
 }

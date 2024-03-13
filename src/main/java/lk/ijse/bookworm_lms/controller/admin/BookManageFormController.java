@@ -2,6 +2,7 @@ package lk.ijse.bookworm_lms.controller.admin;
 
 import javafx.application.Platform;
 import javafx.fxml.*;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,6 +14,7 @@ import lk.ijse.bookworm_lms.controller.admin.AdminDashboardFormController;
 import lk.ijse.bookworm_lms.dto.BookDTO;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.*;
@@ -254,6 +256,21 @@ public class BookManageFormController {
             stage.show();
         } catch (IOException e) {
             new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    private void btnViewTransactionsOnAction() {
+        try {
+            URL resource = BookManageFormController.class.getResource("/view/admin/viewTransactionForm.fxml");
+            Parent parent = FXMLLoader.load(resource);
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setTitle("Transaction Form");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

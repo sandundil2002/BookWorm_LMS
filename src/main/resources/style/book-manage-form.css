@@ -73,6 +73,22 @@
     -fx-background-color: rgba(0, 255, 0, 0.5);
 }
 
+.btnTransaction{
+    -fx-background-color: transparent;
+    -fx-border-color: #ef0c6b;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 30;
+    -fx-font-size: 17;
+    -fx-text-fill: #4f35e8;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-width: 2px;
+}
+
+.btnTransaction:hover{
+    -fx-background-color: rgba(0, 255, 0, 0.5);
+}
+
 .timeLabel {
     -fx-font-size: 25px;
     -fx-font-weight: bold;

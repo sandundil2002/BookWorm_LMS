@@ -15,7 +15,7 @@
       <TextField fx:id="txtSearch" layoutX="38.0" layoutY="90.0" minHeight="23.0" minWidth="117.0" onAction="#btnSearchOnAction" prefHeight="38.0" prefWidth="252.0" promptText="Search Book Id" styleClass="SearchFiled" stylesheets="@../../style/book-manage-form.css" />
       <Label fx:id="lblTitle" layoutX="356.0" layoutY="7.0" styleClass="title" stylesheets="@../../style/book-manage-form.css" text="Welcome to Branch" underline="true" />
       <TextField fx:id="txtGenre" layoutX="982.0" layoutY="89.0" minHeight="23.0" minWidth="117.0" prefHeight="38.0" prefWidth="176.0" promptText="Book Genre" styleClass="UserFiled" stylesheets="@../../style/book-manage-form.css" />
-      <JFXButton layoutX="901.0" layoutY="166.0" onAction="#btnClearOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Clear" />
+      <JFXButton layoutX="731.0" layoutY="166.0" onAction="#btnClearOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Clear" />
       <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="254.0" layoutY="96.0" onMouseClicked="#btnSearchOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Hibernate_CRUD/src/main/resources/assets/search.png" />
@@ -24,8 +24,8 @@
       <TextField fx:id="txtAuthor" layoutX="769.0" layoutY="90.0" minHeight="23.0" minWidth="117.0" prefHeight="38.0" prefWidth="176.0" promptText="Book Author" styleClass="UserFiled" stylesheets="@../../style/book-manage-form.css" />
       <TextField fx:id="txtTitle" layoutX="552.0" layoutY="90.0" minHeight="23.0" minWidth="117.0" prefHeight="38.0" prefWidth="176.0" promptText="Book Title" styleClass="UserFiled" stylesheets="@../../style/book-manage-form.css" />
       <TextField fx:id="txtBranch" editable="false" layoutX="333.0" layoutY="90.0" minHeight="23.0" minWidth="117.0" prefHeight="38.0" prefWidth="176.0" promptText="Branch Name" styleClass="UserFiled" stylesheets="@../../style/book-manage-form.css" />
-      <JFXButton layoutX="661.0" layoutY="166.0" onAction="#btnDeleteOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Delete" />
-      <JFXButton layoutX="421.0" layoutY="166.0" onAction="#btnUpdateOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Update" />
+      <JFXButton layoutX="511.0" layoutY="166.0" onAction="#btnDeleteOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Delete" />
+      <JFXButton layoutX="291.0" layoutY="166.0" onAction="#btnUpdateOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Update" />
       <TableView fx:id="tblBook" layoutX="40.0" layoutY="236.0" prefHeight="454.0" prefWidth="1127.0" styleClass="table" stylesheets="@../../style/book-manage-form.css">
          <columns>
             <TableColumn fx:id="colBookId" prefWidth="96.80001831054688" text="Book Id" />
@@ -37,7 +37,7 @@
             <TableColumn fx:id="colTimeStamp" prefWidth="263.19989013671875" text="Time Stamp" />
          </columns>
       </TableView>
-      <JFXButton layoutX="171.0" layoutY="166.0" onAction="#btnSaveOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Save" />
+      <JFXButton layoutX="71.0" layoutY="166.0" onAction="#btnSaveOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Save" />
       <Label alignment="CENTER" layoutX="232.0" layoutY="698.0" prefHeight="19.0" prefWidth="794.0" text="Copyright 2024 GDSE 68 - All Rights Reserved. MIT License.">
          <font>
             <Font size="13.0" />
@@ -49,5 +49,6 @@
             <Image url="@../../assets/Back Arrow.gif" />
          </image>
       </ImageView>
+      <JFXButton layoutX="941.0" layoutY="162.0" onAction="#btnViewTransactionsOnAction" prefHeight="44.0" prefWidth="198.0" styleClass="btnTransaction" stylesheets="@../../style/book-manage-form.css" text="View Transactions" />
    </children>
 </AnchorPane>
