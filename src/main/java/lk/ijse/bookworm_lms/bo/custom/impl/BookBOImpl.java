@@ -47,7 +47,7 @@ public class BookBOImpl implements BookBO {
         Book book = bookDAO.search(id);
         if (book != null){
             return new BookDTO(
-                    book.getBranch(),
+                    book.getBranchName(),
                     book.getTitle(),
                     book.getAuthor(),
                     book.getGenre(),
@@ -64,7 +64,7 @@ public class BookBOImpl implements BookBO {
         for (Book book : bookList){
             bookDTOS.add(new BookDTO(
                     book.getId(),
-                    book.getBranch(),
+                    book.getBranchName(),
                     book.getTitle(),
                     book.getAuthor(),
                     book.getGenre(),
@@ -82,7 +82,7 @@ public class BookBOImpl implements BookBO {
         for (Book book : bookList){
             bookDTOS.add(new BookDTO(
                     book.getId(),
-                    book.getBranch(),
+                    book.getBranchName(),
                     book.getTitle(),
                     book.getAuthor(),
                     book.getGenre(),
@@ -100,7 +100,7 @@ public class BookBOImpl implements BookBO {
         for (Book book : bookList) {
             bookDTOS.add(new BookDTO(
                     book.getId(),
-                    book.getBranch(),
+                    book.getBranchName(),
                     book.getTitle(),
                     book.getAuthor(),
                     book.getGenre(),

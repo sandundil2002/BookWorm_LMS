@@ -32,10 +32,6 @@ public class Transactions implements Serializable {
 
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
     public Transactions(String userName, String bookTitle, String branch, Date borrowing, Date returning) {
         this.userName = userName;
         this.bookTitle = bookTitle;

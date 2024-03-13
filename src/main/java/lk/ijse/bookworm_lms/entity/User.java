@@ -31,9 +31,6 @@ public class User implements Serializable {
     @CreationTimestamp
     private Timestamp dateTime;
 
-    @OneToMany(mappedBy = "user")
-    private List<Transactions> transactions = new ArrayList<>();
-
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;

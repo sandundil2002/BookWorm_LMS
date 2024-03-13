@@ -12,6 +12,7 @@ import lk.ijse.bookworm_lms.entity.User;
 import java.util.List;
 
 public class UserBOImpl implements UserBO {
+
     private final UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     @Override

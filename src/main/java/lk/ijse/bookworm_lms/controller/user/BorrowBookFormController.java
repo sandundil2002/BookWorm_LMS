@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.bookworm_lms.bo.BOFactory;
+import lk.ijse.bookworm_lms.bo.custom.BookBO;
 import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
 import lk.ijse.bookworm_lms.dto.TransactionDTO;
 
@@ -34,6 +35,8 @@ public class BorrowBookFormController {
 
     private final TransactionBO transactionBO = (TransactionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.TRANSACTION);
 
+    private final BookBO bookBO = (BookBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BOOK);
+
     public void initialize(){
         returnBook();
         reload();
@@ -58,7 +61,8 @@ public class BorrowBookFormController {
 
                     Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure want to return this Book?", ok, no).showAndWait();
                     if (result.orElse(no) == ok) {
-                        updateStatus(selectedItem.getId());
+                        updateBookStatus(selectedItem.getId());
+                        updateTransactionStatus(selectedItem.getId());
                         reload();
                     }
                 }
@@ -68,10 +72,19 @@ public class BorrowBookFormController {
         }
     }
 
-    private void updateStatus(int id){
+    private void updateTransactionStatus(int id){
         try {
             String status = "Return";
             transactionBO.updateStatus(id,status);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateBookStatus(int id){
+        try {
+            String status = "Available";
+            bookBO.updateStatus(id,status);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -30,7 +30,7 @@ public class Branch implements Serializable {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @OneToMany(mappedBy = "branch")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "branch")
     private List<Book> books = new ArrayList<>();
 
     public Branch(String name, String manager, String address, String email) {

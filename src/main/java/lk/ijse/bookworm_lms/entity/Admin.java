@@ -24,11 +24,12 @@ public class Admin implements Serializable {
 
     private String password;
 
-    @OneToMany(mappedBy = "admin")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "admin")
     private List<Branch> branches = new ArrayList<>();
 
     public Admin(String name, String password) {
         this.name = name;
         this.password = password;
     }
+
 }

@@ -65,6 +65,7 @@ public class TransactionDAOImpl implements TransactionDAO{
         Transactions existingTransaction = updateSession.get(Transactions.class, id);
         if (existingTransaction!= null) {
             existingTransaction.setStatus(status);
+            existingTransaction.setReturning(Date.valueOf(LocalDate.now()));
             updateSession.merge(existingTransaction);
         } else {
             updateTransaction.commit();

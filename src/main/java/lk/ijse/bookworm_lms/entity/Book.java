@@ -20,7 +20,7 @@ public class Book implements Serializable {
     @Column(name = "book_id")
     private int id;
 
-    private String branch;
+    private String branchName;
 
     private String title;
 
@@ -30,11 +30,15 @@ public class Book implements Serializable {
 
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
     @CreationTimestamp
     private Timestamp dateTime;
 
-    public Book(String branch, String author, String title, String genre, String status) {
-        this.branch = branch;
+    public Book(String branchName, String author, String title, String genre, String status) {
+        this.branchName = branchName;
         this.author = author;
         this.title = title;
         this.genre = genre;
