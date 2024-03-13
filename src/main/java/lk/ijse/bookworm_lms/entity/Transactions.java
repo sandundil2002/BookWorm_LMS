@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,6 +33,9 @@ public class Transactions implements Serializable {
     private Date returning;
 
     private String status;
+
+    @ManyToMany(mappedBy = "transactionList")
+    private List<Book> bookList = new ArrayList<>();
 
     public Transactions(String userName, String bookTitle, String branch, Date borrowing, Date returning) {
         this.userName = userName;
