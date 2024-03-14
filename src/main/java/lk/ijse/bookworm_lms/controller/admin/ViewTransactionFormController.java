@@ -47,7 +47,10 @@ public class ViewTransactionFormController {
     @FXML
     private void btnNotReturnOnAction() {
         try {
-            System.out.println(transactionBO.getAllTransaction());
+            transactionBO.getAllTransaction();
+            colId.setText("Branch");
+            setCellValueFactory();
+            colId.setCellValueFactory(new PropertyValueFactory<>("branch"));
         } catch (Exception e) {
             e.printStackTrace();
         }

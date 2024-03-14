@@ -29,7 +29,7 @@ public class AdminLoginFormController {
     private final AdminBO adminBO = (AdminBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADMIN);
 
     public void initialize(){
-        addDefaultAdmin();
+        //addDefaultAdmin();
     }
 
     @FXML
