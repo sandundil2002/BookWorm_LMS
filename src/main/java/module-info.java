@@ -18,4 +18,5 @@ module lk.ijse.bookworm_lms {
     opens lk.ijse.bookworm_lms.controller.user to javafx.fxml;
     exports lk.ijse.bookworm_lms.controller.admin;
     opens lk.ijse.bookworm_lms.controller.admin to javafx.fxml;
+    opens lk.ijse.bookworm_lms.embeddad;
 }

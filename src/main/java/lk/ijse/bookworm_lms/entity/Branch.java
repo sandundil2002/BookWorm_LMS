@@ -27,7 +27,7 @@ public class Branch implements Serializable {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "admin_id", insertable = false, updatable = false)
+    @JoinColumn(name = "admin_id")
     private Admin admin;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "branch")
