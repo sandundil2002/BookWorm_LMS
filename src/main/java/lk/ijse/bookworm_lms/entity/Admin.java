@@ -1,6 +1,7 @@
 package lk.ijse.bookworm_lms.entity;
 
 import jakarta.persistence.*;
+import lk.ijse.bookworm_lms.dto.AdminDTO;
 import lombok.*;
 
 import java.io.Serializable;
@@ -30,6 +31,16 @@ public class Admin implements Serializable {
     public Admin(String name, String password) {
         this.name = name;
         this.password = password;
+    }
+
+    public Admin(int id, String name, String password) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
+    public AdminDTO toDto(){
+        return new AdminDTO(id,name,password);
     }
 
 }

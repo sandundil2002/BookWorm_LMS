@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,6 @@
       <Label layoutX="201.0" layoutY="24.0" styleClass="title" stylesheets="@../../style/admin-login-form.css" text="Hello Admin" />
       <Label layoutX="84.0" layoutY="119.0" styleClass="subtitle" stylesheets="@../../style/admin-login-form.css" text="Please Enter Your Username And Password" />
       <TextField fx:id="txtUsername" layoutX="146.0" layoutY="237.0" maxWidth="346.0" prefHeight="39.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../../style/admin-login-form.css" />
-      <TextField fx:id="txtPassword" layoutX="149.0" layoutY="362.0" onAction="#btnLoginOnAction" prefHeight="43.0" prefWidth="346.0" styleClass="adminFiled" stylesheets="@../../style/admin-login-form.css" />
       <Label layoutX="159.0" layoutY="215.0" styleClass="normalTitle" stylesheets="@../../style/admin-login-form.css" text="User Name" />
       <Label layoutX="162.0" layoutY="340.0" styleClass="normalTitle" stylesheets="@../../style/admin-login-form.css" text="Password" />
       <JFXButton layoutX="254.0" layoutY="468.0" onAction="#btnLoginOnAction" prefHeight="46.0" prefWidth="130.0" styleClass="btn" stylesheets="@../../style/admin-login-form.css" text="Login" />
@@ -21,5 +21,6 @@
             <Image url="@../../assets/Back Arrow.gif" />
          </image>
       </ImageView>
+      <PasswordField fx:id="txtPassword" layoutX="150.0" layoutY="362.0" prefHeight="43.0" prefWidth="346.0" styleClass="adminFiled" />
    </children>
 </AnchorPane>

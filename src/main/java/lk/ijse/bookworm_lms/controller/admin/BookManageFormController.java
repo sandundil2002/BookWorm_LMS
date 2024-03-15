@@ -1,6 +1,9 @@
 package lk.ijse.bookworm_lms.controller.admin;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -65,7 +68,7 @@ public class BookManageFormController {
     private TextField txtBranch;
 
     @FXML
-    private TextField txtGenre;
+    private JFXComboBox<String> cmbGenre;
 
     @FXML
     private TextField txtSearch;
@@ -81,6 +84,7 @@ public class BookManageFormController {
         //updateRealTime(lblTime);
         lblTitle.setText("Welcome To "+branchName+" Branch");
         txtBranch.setText(branchName);
+        loadBookGenres();
         reload();
     }
 
@@ -101,7 +105,7 @@ public class BookManageFormController {
         txtBranch.setText(branchName);
         txtTitle.setText("");
         txtAuthor.setText("");
-        txtGenre.setText("");
+        cmbGenre.setValue("");
         reload();
     }
 
@@ -133,7 +137,7 @@ public class BookManageFormController {
             String branch = txtBranch.getText();
             String title = txtTitle.getText();
             String author = txtAuthor.getText();
-            String genre = txtGenre.getText();
+            String genre = cmbGenre.getValue();
             String status = "Available";
 
             BookDTO bookDTO = new BookDTO(branch,title,author,genre,status);
@@ -162,7 +166,7 @@ public class BookManageFormController {
                     txtBranch.setText(bookDTO.getBranch());
                     txtTitle.setText(bookDTO.getTitle());
                     txtAuthor.setText(bookDTO.getAuthor());
-                    txtGenre.setText(bookDTO.getGenre());
+                    cmbGenre.setValue(bookDTO.getGenre());
                 }  else {
                     new Alert(Alert.AlertType.ERROR, "Please enter a valid book id").show();
                     txtSearch.setStyle("-fx-border-color:#ff0000;");
@@ -182,7 +186,7 @@ public class BookManageFormController {
             String branch = txtBranch.getText();
             String title = txtTitle.getText();
             String author = txtAuthor.getText();
-            String genre = txtGenre.getText();
+            String genre = cmbGenre.getValue();
             String status = "Availble";
 
             BookDTO bookDTO = new BookDTO(branch,title,author,genre,status);
@@ -213,6 +217,15 @@ public class BookManageFormController {
         }
     }
 
+    public void loadBookGenres(){
+        String [] genres = {"Mystery","Thriller","Science Fiction","Fantasy","Comedy","Romance","Historical Fiction","Horror","Education","Adventure"};
+        ObservableList<String> obList = FXCollections.observableArrayList();
+        for (String genre : genres){
+            obList.add(genre);
+        }
+        cmbGenre.setItems(obList);
+    }
+
     private boolean validateBook(){
         String title = txtTitle.getText();
         boolean isTitleValidated = Pattern.compile("^[A-Za-z]{1,20}$").matcher(title).matches();
@@ -231,16 +244,6 @@ public class BookManageFormController {
             new Alert(Alert.AlertType.WARNING, "Please enter a valid book author").show();
             txtAuthor.setStyle("-fx-border-color:#ff0000;");
             txtAuthor.requestFocus();
-            return false;
-        }
-
-        String genre = txtGenre.getText();
-        boolean isGenreValidated = Pattern.compile("^[A-Za-z]{1,20}$").matcher(genre).matches();
-
-        if (!isGenreValidated) {
-            new Alert(Alert.AlertType.WARNING, "Please enter a valid book genre").show();
-            txtGenre.setStyle("-fx-border-color:#ff0000;");
-            txtGenre.requestFocus();
             return false;
         }
         return true;
@@ -285,7 +288,6 @@ public class BookManageFormController {
         txtSearch.setStyle("-fx-border-color: black");
         txtAuthor.setStyle("-fx-border-color: black");
         txtTitle.setStyle("-fx-border-color: black");
-        txtGenre.setStyle("-fx-border-color: black");
     }
 
     private void updateRealTime(Label label) {

@@ -7,7 +7,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.TransactionBO;
-import lk.ijse.bookworm_lms.controller.user.UserLoginFormController;
 import lk.ijse.bookworm_lms.dto.TransactionDTO;
 
 public class ViewTransactionFormController {
@@ -47,7 +46,7 @@ public class ViewTransactionFormController {
     @FXML
     private void btnNotReturnOnAction() {
         try {
-            transactionBO.getAllTransaction();
+            tblTransaction.setItems(transactionBO.getAllTransaction());
             colId.setText("Branch");
             setCellValueFactory();
             colId.setCellValueFactory(new PropertyValueFactory<>("branch"));

@@ -3,8 +3,7 @@ package lk.ijse.bookworm_lms.controller.user;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
@@ -20,7 +19,7 @@ public class UserLoginFormController {
     private AnchorPane pane;
 
     @FXML
-    private TextField txtPassword;
+    private PasswordField txtPassword;
 
     @FXML
     private TextField txtUsername;

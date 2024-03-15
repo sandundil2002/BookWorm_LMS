@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,7 +15,6 @@
    <children>
       <TextField fx:id="txtSearch" layoutX="38.0" layoutY="90.0" minHeight="23.0" minWidth="117.0" onAction="#btnSearchOnAction" prefHeight="38.0" prefWidth="252.0" promptText="Search Book Id" styleClass="SearchFiled" stylesheets="@../../style/book-manage-form.css" />
       <Label fx:id="lblTitle" layoutX="356.0" layoutY="7.0" styleClass="title" stylesheets="@../../style/book-manage-form.css" text="Welcome to Branch" underline="true" />
-      <TextField fx:id="txtGenre" layoutX="982.0" layoutY="89.0" minHeight="23.0" minWidth="117.0" prefHeight="38.0" prefWidth="176.0" promptText="Book Genre" styleClass="UserFiled" stylesheets="@../../style/book-manage-form.css" />
       <JFXButton layoutX="731.0" layoutY="166.0" onAction="#btnClearOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Clear" />
       <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="254.0" layoutY="96.0" onMouseClicked="#btnSearchOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -50,5 +50,6 @@
          </image>
       </ImageView>
       <JFXButton layoutX="941.0" layoutY="162.0" onAction="#btnViewTransactionsOnAction" prefHeight="44.0" prefWidth="198.0" styleClass="btnTransaction" stylesheets="@../../style/book-manage-form.css" text="View Transactions" />
+      <JFXComboBox fx:id="cmbGenre" layoutX="997.0" layoutY="87.0" prefHeight="38.0" prefWidth="170.0" promptText="     Book Genre" styleClass="UserFiled" />
    </children>
 </AnchorPane>
