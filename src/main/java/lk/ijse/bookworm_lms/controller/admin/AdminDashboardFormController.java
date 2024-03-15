@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BranchBO;
 import lk.ijse.bookworm_lms.dto.BranchDTO;
+import lk.ijse.bookworm_lms.util.DateTimeUtil;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -19,6 +21,12 @@ public class AdminDashboardFormController {
 
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
 
     @FXML
     private TableColumn<?, ?> colManager;
@@ -52,6 +60,8 @@ public class AdminDashboardFormController {
     private final BranchBO branchBO = (BranchBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.BRANCH);
 
     public void initialize(){
+        DateTimeUtil.updateRealTime(lblTime);
+        lblDate.setText(LocalDate.now().toString());
         reload();
         openBranch();
     }
@@ -160,6 +170,21 @@ public class AdminDashboardFormController {
             } catch (Exception e){
                 e.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    private void btnBackOnAction() {
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/homeForm.fxml"));
+            Scene scene = new Scene(anchorPane);
+            Stage stage = (Stage) pane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Home Form");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
         }
     }
 

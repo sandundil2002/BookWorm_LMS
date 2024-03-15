@@ -15,6 +15,7 @@ import lk.ijse.bookworm_lms.bo.BOFactory;
 import lk.ijse.bookworm_lms.bo.custom.BookBO;
 import lk.ijse.bookworm_lms.controller.admin.AdminDashboardFormController;
 import lk.ijse.bookworm_lms.dto.BookDTO;
+import lk.ijse.bookworm_lms.util.DateTimeUtil;
 
 import java.io.IOException;
 import java.net.URL;
@@ -81,7 +82,8 @@ public class BookManageFormController {
     private final String branchName = AdminDashboardFormController.branchName;
 
     public void initialize(){
-        //updateRealTime(lblTime);
+        DateTimeUtil.updateRealTime(lblTime);
+        lblDate.setText(LocalDate.now().toString());
         lblTitle.setText("Welcome To "+branchName+" Branch");
         txtBranch.setText(branchName);
         loadBookGenres();
@@ -288,15 +290,5 @@ public class BookManageFormController {
         txtSearch.setStyle("-fx-border-color: black");
         txtAuthor.setStyle("-fx-border-color: black");
         txtTitle.setStyle("-fx-border-color: black");
-    }
-
-    private void updateRealTime(Label label) {
-        lblDate.setText(LocalDate.now().toString());
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(() -> {
-            String currentTime = LocalDateTime.now().format(timeFormatter);
-            Platform.runLater(() -> label.setText(currentTime));
-        }, 0, 1, TimeUnit.SECONDS);
     }
 }

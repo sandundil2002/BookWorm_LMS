@@ -72,3 +72,17 @@
 .btn:hover{
     -fx-background-color: rgba(0, 255, 0, 0.5);
 }
+
+.timeLabel {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-padding: 2px 6px;
+}
+
+.dateLabel {
+    -fx-font-size: 15px;
+    -fx-font-weight: normal;
+    -fx-text-fill: black;
+    -fx-padding: 2px 6px;
+}

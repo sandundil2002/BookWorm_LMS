@@ -12,7 +12,7 @@
    <children>
       <Label fx:id="lblTitle" layoutX="510.0" layoutY="-2.0" styleClass="title" text="User Dashboard" underline="true" />
       <Line endX="10.600021362304688" endY="610.3999633789062" layoutX="227.0" layoutY="118.0" startX="10.600021362304688" startY="-118.0" styleClass="line" />
-      <Label layoutX="109.0" layoutY="58.0" text="Book Worm">
+      <Label layoutX="109.0" layoutY="48.0" text="Book Worm">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
@@ -26,6 +26,13 @@
       <ImageView fitHeight="52.0" fitWidth="58.0" layoutX="12.0" layoutY="11.0" onMouseClicked="#btnBackOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assets/Back Arrow.gif" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTime" layoutX="998.0" prefHeight="44.0" prefWidth="176.0" styleClass="timeLabel" text="Label" />
+      <Label fx:id="lblDate" layoutX="1029.0" layoutY="37.0" prefHeight="26.0" prefWidth="146.0" styleClass="dateLabel" stylesheets="@../../style/book-manage-form.css" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="68.0" layoutX="114.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/logo.gif" />
          </image>
       </ImageView>
    </children>

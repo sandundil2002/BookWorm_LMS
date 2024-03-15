@@ -34,7 +34,7 @@
             <TableColumn fx:id="colAuthor" prefWidth="195.20001220703125" text="Author" />
             <TableColumn fx:id="colGenre" prefWidth="136.0" text="Genre" />
             <TableColumn fx:id="colStatus" prefWidth="135.2000732421875" text="Status" />
-            <TableColumn fx:id="colTimeStamp" prefWidth="263.19989013671875" text="Time Stamp" />
+            <TableColumn fx:id="colTimeStamp" prefWidth="263.19989013671875" text="Added Date &amp; Time" />
          </columns>
       </TableView>
       <JFXButton layoutX="71.0" layoutY="166.0" onAction="#btnSaveOnAction" prefHeight="44.0" prefWidth="146.0" styleClass="btn" stylesheets="@../../style/book-manage-form.css" text="Save" />

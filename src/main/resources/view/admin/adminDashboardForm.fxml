@@ -34,5 +34,12 @@
         </columns>
       </TableView>
       <JFXButton layoutX="622.0" layoutY="623.0" onAction="#btnClearOnAction" prefHeight="44.0" prefWidth="106.0" styleClass="btn" stylesheets="@../../style/admin-dashboard-form.css" text="Clear" />
+      <Label fx:id="lblTime" layoutX="998.0" layoutY="3.0" prefHeight="44.0" prefWidth="176.0" styleClass="timeLabel" text="Label" />
+      <Label fx:id="lblDate" layoutX="1029.0" layoutY="42.0" prefHeight="26.0" prefWidth="146.0" styleClass="dateLabel" stylesheets="@../../style/book-manage-form.css" text="Label" />
+      <ImageView fitHeight="58.0" fitWidth="56.0" layoutX="24.0" layoutY="5.0" onMouseClicked="#btnBackOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/Back Arrow.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

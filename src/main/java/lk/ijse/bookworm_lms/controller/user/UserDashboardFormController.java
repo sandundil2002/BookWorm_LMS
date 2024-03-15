@@ -7,10 +7,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.bookworm_lms.util.DateTimeUtil;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class UserDashboardFormController {
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
 
     @FXML
     private Label lblTitle;
@@ -19,6 +27,8 @@ public class UserDashboardFormController {
     private AnchorPane pane;
 
     public void initialize(){
+        DateTimeUtil.updateRealTime(lblTime);
+        lblDate.setText(LocalDate.now().toString());
         String user = UserLoginFormController.member;
         lblTitle.setText("Welcome Back "+ user);
         btnSearchBooksOnAction();
@@ -84,7 +94,7 @@ public class UserDashboardFormController {
             stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
-            new Alert(Alert.AlertType.WARNING,e.getMessage()).show();
+            e.printStackTrace();
         }
     }
 }
