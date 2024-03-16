@@ -1,5 +1,6 @@
 package lk.ijse.bookworm_lms.controller.user;
 
+import com.jfoenix.controls.JFXCheckBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +17,12 @@ import java.util.regex.Pattern;
 public class UserLoginFormController {
 
     @FXML
+    private JFXCheckBox checkBox;
+
+    @FXML
+    private TextField passShow;
+
+    @FXML
     private AnchorPane pane;
 
     @FXML
@@ -27,6 +34,18 @@ public class UserLoginFormController {
     public static String member;
 
     private final UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+
+    public void initialize(){
+        passShow.setManaged(false);
+        passShow.managedProperty().bind(checkBox.selectedProperty());
+        passShow.visibleProperty().bind(checkBox.selectedProperty());
+
+        txtPassword.managedProperty().bind(checkBox.selectedProperty().not());
+        txtPassword.visibleProperty().bind(checkBox.selectedProperty().not());
+
+        passShow.textProperty().bindBidirectional(txtPassword.textProperty());
+
+    }
 
     @FXML
     private void btnLoginOnAction() {

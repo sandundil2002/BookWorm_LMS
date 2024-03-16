@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -23,5 +24,7 @@
          </image>
       </ImageView>
       <PasswordField fx:id="txtPassword" layoutX="147.0" layoutY="363.0" prefHeight="43.0" prefWidth="346.0" styleClass="adminFiled" />
+      <TextField fx:id="passShow" layoutX="147.0" layoutY="362.0" prefHeight="43.0" prefWidth="346.0" styleClass="adminFiled" />
+      <JFXCheckBox fx:id="checkBox" layoutX="384.0" layoutY="417.0" prefHeight="18.0" prefWidth="195.0" text="Show Password" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package lk.ijse.bookworm_lms.controller.admin;
 
+import com.jfoenix.controls.JFXCheckBox;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +18,12 @@ import java.util.regex.Pattern;
 public class AdminLoginFormController {
 
     @FXML
+    private JFXCheckBox checkBox;
+
+    @FXML
+    private TextField passShow;
+
+    @FXML
     private AnchorPane pane;
 
     @FXML
@@ -29,6 +36,14 @@ public class AdminLoginFormController {
 
     public void initialize(){
         //addDefaultAdmin();
+        passShow.setManaged(false);
+        passShow.managedProperty().bind(checkBox.selectedProperty());
+        passShow.visibleProperty().bind(checkBox.selectedProperty());
+
+        txtPassword.managedProperty().bind(checkBox.selectedProperty().not());
+        txtPassword.visibleProperty().bind(checkBox.selectedProperty().not());
+
+        passShow.textProperty().bindBidirectional(txtPassword.textProperty());
     }
 
     @FXML
